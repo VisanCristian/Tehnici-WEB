@@ -1,123 +1,491 @@
-body{
-    --culoare-fundal:lightblue;
-    --culoare-contur:#557226;
-    --margine-pagina:120px;
-    background-color: var(--culoare-fundal);
+header {
+    width: 100%;
+    background: linear-gradient(180deg, #9b24ff, #1b0f3b 55%, #03030a);
+    padding: 1.5rem 0;
+    box-shadow: 0 0 2.2rem var(--accent-magenta);
 }
 
-main{
-    margin-left: var(--margine-pagina);
-    margin-right: var(--margine-pagina);
+header nav {
+    width: fit-content;
+    margin: 0 auto;
 }
 
-#grid-pagina{
+header h1 {
+    text-align: center;
+    margin: 0.6rem 0 0;
+    font-size: 2rem;
+    letter-spacing: 0.15em;
+}
+
+footer {
+    background: linear-gradient(180deg, #050406, #170c32 45%, var(--accent-purple));
+    margin-top: 2.5rem;
+    padding: 1.75rem 0 2rem;
+    box-shadow: 0 0 2.2rem var(--accent-magenta);
+}
+
+footer address {
+    font-style: normal;
+    max-width: 56rem;
+    margin: 0 auto 1rem;
     display: grid;
-    gap: 10px;
-    /* Grid pe 3 coloane */
-    grid-template-columns: 2fr 1fr 2fr;
-    grid-template-areas: "z-welcome z-welcome z-welcome"
-                         "promotii promotii anunturi"
-                         "fig1 orar orar"
-                         "fig2 orar orar"
-                         "fig3 orar orar"
-                         "produse produse produse"
-                         "index-intrebari index-intrebari index-intrebari";
-} 
-
-.container-iframe{
-    display: flex;
-    flex-direction:column;
-    align-items: center;
-    height: 315px;
-    width: 600px;
+    gap: 0.625rem;
 }
 
-.taburi-iframe {
-     display: flex;
-     flex-direction:row; /*sau column sau reverse row sau bla bla*/
-     align-items: stretch;
-     /*height: 100%;*/
-     justify-content: flex-end;
-     /*border: 1px solid var(--culoare-contur);*/
-    }
+footer address p {
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    border-left: 0.19rem solid var(--accent-cyan);
+    background: linear-gradient(90deg, var(--bg-dark), transparent);
+}
 
-.taburi-iframe > a{
-    display: inline-block;
-    padding: 10px;
-    background-color: var(--culoare-fundal);
-    border: 1px solid var(--culoare-contur);
-    color:black;
+footer a {
+    color: var(--accent-cyan);
     text-decoration: none;
-    border-radius: 5px;
-    margin-right: 10px;
-    transition: all 1s linear;
+    border-bottom: 0.0625rem dashed var(--accent-cyan);
+    transition: color 0.25s ease, border-color 0.25s ease;
 }
 
-.taburi-iframe > a:hover{
-    background-color: var(--culoare--contur);
-    color: white;
+footer a:hover {
+    color: var(--accent-pink);
+    border-bottom-color: var(--accent-pink);
 }
 
-@media screen and (max-width:1200px) {
-
-    body{
-        --margine-pagina:80px;
-    }
-    #grid-pagina{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "z-welcome z-welcome"
-                         "promotii promotii"
-                         "anunturi anunturi"
-                         "fig1 orar "
-                         "fig2 orar "
-                         "fig3 orar "
-                         "produse produse "
-                         "index-intrebari index-intrebari";
-} 
+footer .media-map,
+footer .media-pdf {
+    margin: 0.625rem auto;
+    border: 0.0625rem solid var(--accent-purple);
+    box-shadow: 0 0 0.5rem var(--accent-indigo);
 }
 
-@media screen and (max-width:700px) {
-
-    body{
-        --margine-pagina:50px;
-    }
-    #grid-pagina{
+footer small {
     display: block;
-} 
+    text-align: center;
+    margin: 0.75rem 0;
 }
 
-#grid-pagina>*{
-    border: 1px solid var(--culoare-contur);
-    box-shadow: 0px 0px 2px var(--culoare-contur);
-    padding: 10px;
-} 
-
-#welcome{
-    grid-area: z-welcome;
+#licenta-pdf {
+    max-width: 56rem;
+    margin: 1.25rem auto 0;
+    padding-top: 0.625rem;
+    border-top: 0.0625rem solid var(--accent-purple);
 }
-#promotii{
+
+footer blockquote {
+    margin: 1rem auto 0;
+    max-width: 56rem;
+    text-align: center;
+    color: var(--accent-pink);
+    border-left: 0.19rem solid var(--accent-magenta);
+    padding-left: 0.625rem;
+}
+body {
+    box-shadow: 0 0 0.25rem var(--accent-magenta), 0;
+    --bg-primary: black;
+    --bg-dark: #1a1a3e;
+    --border-glow: #E30DEB;
+    --accent-highlight: #7E19E0;
+    --text-primary: white;
+    --accent-cyan: #19C0E0;
+    --accent-blue: #206EE6;
+    --accent-indigo: #2319E0;
+    --accent-purple: #7E19E0;
+    --accent-magenta: #E30DEB;
+    --accent-pink: #DC63E0;
+    --spacing-page: 120px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: "Exo 2", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    transition: font-size 0.3s ease;
+    margin: 0;
+    padding: 0;
+}
+
+header,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.subtitlu,
+button,
+.tab-btn,
+ul.meniu li,
+#link-top {
+    font-family: "Orbitron", sans-serif;
+}
+
+.titlu-icon {
+    color: var(--accent-pink);
+    margin-right: 0.4rem;
+}
+
+#welcome .titlu-icon {
+    color: var(--accent-cyan);
+    margin-left: 0.45rem;
+    margin-right: 0;
+}
+
+main {
+    margin-left: var(--spacing-page);
+    margin-right: var(--spacing-page);
+}
+
+#grid-pagina {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "welcome welcome welcome welcome"
+        "promotii promotii orar anunturi"
+        "fan-related fan-related fan-related fan-related"
+        "faq produse video-ytb video-ytb";
+}
+
+#grid-pagina > * {
+    border: 0.0625rem solid var(--border-glow);
+    border-radius: 0.75rem;
+    box-shadow: 0 0 0.25rem var(--accent-magenta), 0 0 0.875rem var(--accent-purple), 0 0 1.25rem var(--accent-indigo);
+    padding: 0.625rem;
+}
+
+#welcome {
+    grid-area: welcome;
+}
+
+.welcome-poze {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.welcome-poze > figure,
+.welcome-poze > #dv-prezentare-1 {
+    width: calc(50% - 0.5rem);
+    min-width: 0;
+    margin: 0;
+}
+
+#dv-prezentare,
+#dv-prezentare-1 {
+    margin: 0;
+    width: 100%;
+}
+
+#welcome img {
+    width: 100%;
+    max-width: 26.25rem;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 900px) {
+    .welcome-poze {
+        flex-direction: column;
+    }
+
+    .welcome-poze > figure,
+    .welcome-poze > #dv-prezentare-1 {
+        width: 100%;
+    }
+}
+
+#promotii {
     grid-area: promotii;
 }
-#anunturi{
+
+#anunturi {
     grid-area: anunturi;
 }
-#orar{
-    grid-area: orar;
-}
- 
-#fig1{
-    grid-area: fig1;
-}
-#fig2{
-    grid-area: fig2;
-}
-#fig3{
-    grid-area: fig3;
-}
-#produse{
+
+#produse {
     grid-area: produse;
 }
-#index-intrebari{
-    grid-area: index-intrebari;
+
+#orar {
+    grid-area: orar;
+}
+
+#faq {
+    grid-area: faq;
+}
+
+#fan-related {
+    grid-area: fan-related;
+}
+
+#video-ytb {
+    grid-area: video-ytb;
+}
+
+img {
+    width: 80%;
+    max-width: 37.5rem;
+    min-width: 6.25rem;
+    height: auto;
+    display: block;
+}
+
+.img-mica {
+    width: 30%;
+    max-width: 12.5rem;
+    min-width: 5rem;
+}
+
+.media-responsive {
+    width: 80%;
+    max-width: 43.75rem;
+    min-width: 12.5rem;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    display: block;
+}
+
+.media-map {
+    width: 80%;
+    max-width: 31.25rem;
+    min-width: 12.5rem;
+    aspect-ratio: 4 / 3;
+}
+
+.media-pdf {
+    width: 80%;
+    max-width: 43.75rem;
+    min-width: 12.5rem;
+    height: 25rem;
+    display: block;
+}
+
+table {
+    max-width: 100%;
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+@media screen and (max-width: 1200px) {
+    img {
+        width: 90%;
+        max-width: 31.25rem;
+    }
+
+    .media-responsive,
+    .media-map,
+    .media-pdf {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    img {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .img-mica {
+        width: 50%;
+        min-width: unset;
+    }
+
+    .media-responsive,
+    .media-map,
+    .media-pdf {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    body {
+        --spacing-page: 80px;
+        font-size: 1.12rem;
+    }
+
+    #tab-facts {
+        border-spacing: 0;
+    }
+    #grid-pagina {
+        gap: 0.5rem;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "welcome welcome"
+            "promotii anunturi"
+            "orar orar"
+            "faq produse"
+            "video-ytb video-ytb"
+            "fan-related fan-related";
+    }
+}
+
+@media screen and (max-width: 700px) {
+    body {
+        --spacing-page: 50px;
+        font-size: 1.04rem;
+    }
+    #tab-facts {
+        border-spacing: 0;
+    }
+    #grid-pagina {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "welcome"
+            "promotii"
+            "anunturi"
+            "orar"
+            "faq"
+            "produse"
+            "video-ytb"
+            "fan-related";
+    }
+}
+
+#tab-facts  {
+    caption-side: bottom;
+    border-spacing: 0.125rem;
+    border-collapse: separate;
+    text-align: center;
+}
+
+#tab-orar {
+    border-spacing: 0.125rem;
+    border-collapse: separate;
+    text-align: center;
+}
+
+#tab-orar th,
+#tab-orar td {
+    border: 0.0625rem solid var(--accent-purple);
+    padding: 0.5rem 0.625rem;
+}
+
+#tab-orar tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+#tab-orar tbody tr:hover {
+    background-color: var(--bg-dark);
+}
+
+#tab-orar thead th,
+#tab-orar tfoot td {
+    background-color: var(--bg-dark);
+}
+
+#tab-facts tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+#tab-facts tbody tr:nth-child(odd)  { background-color: var(--accent-indigo); }
+#tab-facts tbody tr:nth-child(even) { background-color: var(--accent-purple); }
+
+#tab-facts tbody tr:hover {
+    background-color: var(--accent-magenta);
+}
+
+.video-tabs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.tab-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0;
+    order: 2;
+}
+
+.tab-btn {
+    background-color: var(--bg-dark);
+    border: 0.0625rem solid var(--accent-purple);
+    color: var(--text-primary);
+    padding: 0.625rem 1.25rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.tab-btn:hover {
+    background-color: var(--accent-purple);
+    border-color: var(--accent-magenta);
+}
+
+.tab-iframe {
+    border: 0.125rem solid var(--text-primary);
+    box-shadow: 0 0 0.625rem var(--accent-purple);
+    order: 1;
+}
+
+#fig-map {
+    text-align: center;
+    img-align: center;
+    align-items: center;
+}
+
+#link-top {
+    position: fixed;
+    left: 0.8rem;
+    bottom: 0.8rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-bottom: none;
+    opacity: 0.75;
+    z-index: 1000;
+}
+
+#link-top:hover {
+    border-bottom: none;
+}
+
+#link-top::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--accent-purple);
+    border: 0.25rem solid;
+    border-top-color: var(--accent-magenta);
+    border-bottom-color: var(--accent-magenta);
+    border-left-color: var(--accent-cyan);
+    border-right-color: var(--accent-cyan);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+}
+
+#link-top:hover {
+    opacity: 1;
+}
+
+#link-top:hover::before {
+    transform: rotate(90deg);
+    background: linear-gradient(135deg, var(--accent-purple) 25%, var(--bg-dark) 100%);
+    box-shadow: inset 0 0 0.625rem var(--bg-primary), 0 0 0 0.19rem var(--bg-dark);
+}
+
+#sageata {
+    position: relative;
+    z-index: 2;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--accent-purple);
+    text-shadow: 0 0 2px var(--bg-dark);
+    filter: blur(0.1rem);
+    transition: filter 0.3s ease, text-shadow 0.3s ease;
+}
+
+#link-top:hover #sageata {
+    filter: blur(0);
+    text-shadow: none;
 }

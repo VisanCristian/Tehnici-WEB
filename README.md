@@ -40,6 +40,7 @@ Pagina va contine o sectiune unde utilizatorul poate accesa review-uri sortate i
 Cuvinte cheie: review BOON: The FNAF Store
 
 
+
 ### Analiza unor site-uri similare
 
 #### Hex store ([https://hex.store/](https://hex.store/))
@@ -72,3 +73,27 @@ PRO:
 - Site-ul se misca foarte bine, facand experinta de navigare super usoara.
 CON:
 - Nu poti gasi deloc informatii legate de universul FNAF, fiind un magazin orientat strict spre vanzari. Acest lucru poate determina utilizatorul sa caute alt magazin care are in vedere si acest aspect.
+
+## ETAPA 2
+
+### Schema cromatica
+
+Site-ul foloseste o schema cromatica analogica bazata pe violet/magenta cu accente de cyan si albastru. Culorile au fost alese avand in vedere tema FNAF — atmosfera intunecata, misterioasa si usor horror a jocurilor. Violet si magenta dau senzatia de mister si supranatural, in timp ce cyan-ul aduce un contrast rece care aminteste de luminile neon din locatiile FNAF. Fundalul negru pastreaza aspectul sumbru al universului.
+
+Culorile sunt definite ca variabile CSS pe `body` si sunt folosite exclusiv prin aceste variabile in tot CSS-ul:
+
+| Variabila | Valoare | Rol |
+|---|---|---|
+| `--bg-primary` | `black` | Fundal principal |
+| `--bg-dark` | `#1a1a3e` | Fundal secundar (zone, tabele, nav) |
+| `--border-glow` | `#E30DEB` | Contur si glow pe sectiuni |
+| `--accent-highlight` | `#7E19E0` | Highlight general |
+| `--text-primary` | `white` | Culoare text principal |
+| `--accent-cyan` | `#19C0E0` | Accent cyan (link-uri, detalii) |
+| `--accent-blue` | `#206EE6` | Accent albastru |
+| `--accent-indigo` | `#2319E0` | Accent indigo (tabele, shadow) |
+| `--accent-purple` | `#7E19E0` | Accent violet principal (borduri, hover) |
+| `--accent-magenta` | `#E30DEB` | Accent magenta (glow, shadow) |
+| `--accent-pink` | `#DC63E0` | Accent roz deschis (hover, citate) |
+| `--spacing-page` | `120px` | Margine laterala pagina |
+
