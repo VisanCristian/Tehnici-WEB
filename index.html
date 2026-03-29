@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="FNAF, BOON, BOON:The FNAF Store, magazin, Chika, Bonie, Foxy, Freddy, costume, hanorace, tricouri, pantaloni, huse de telefon, stickere, seturi DIY, Five Nights at Freddy's, FNAF 1"
+    />
+    <meta
+      name="description"
+      content="BOON:The FNAF Store, Un magazin de costume, plushuri si seturi 'Do It Yourself' cu tematica FNAF pentru toti fanii inraiti"
+    />
+    <meta name="author" content="Visan Cristian-Andrei" />
+    <title>BOON:The FNAF Store</title>
+
+    <meta name="msapplication-TileColor" content="#2b5797" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/resurse/imagini/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/resurse/imagini/favicon/favicon.svg"
+    />
+    <link rel="shortcut icon" href="/resurse/imagini/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/resurse/imagini/favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="BOON:The FNAF Store" />
+    <link rel="manifest" href="/resurse/imagini/favicon/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300..700&family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="./resurse/css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="./resurse/css/general.css" type="text/css" />
+    <link rel="stylesheet" href="./resurse/css/nav.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/resurse/css/nav1000.css"
+      type="text/css"
+      media="screen and (max-width: 1000px)"
+    />
+    <link
+      rel="stylesheet"
+      href="/resurse/css/nav700.css"
+      type="text/css"
+      media="screen and (max-width: 700px)"
+    />
+    <link rel="stylesheet" href="resurse/css/print.css" media="print" />
+  </head>
+
+  <body id="main-body">
+    <div class="watermark">
+      Visan<br />
+      Cristian Andrei
+    </div>
+    <header>
+      <h1>BOON:The FNAF Shop</h1>
+      <nav>
+        <label id="hamburger" for="ch-menu">
+          <img
+            src="resurse/imagini/favicon/favicon-96x96.png"
+            alt="BOON sigla"
+          />
+        </label>
+        <input type="checkbox" id="ch-menu" />
+        <ul class="meniu">
+          <li>
+            <div class="text-icon" id="acasa">Acasa</div>
+            <div class="imag-icon" id="acasa-mediu">
+              <span class="fas fa-regular fa-house"></span>
+            </div>
+            <ul>
+              <li><a href="#welcome">Bine ati venit</a></li>
+              <li><a href="#promotii">Promotii</a></li>
+              <li><a href="#anunturi">Anunturi</a></li>
+              <li><a href="#produse">Produse</a></li>
+              <li><a href="#orar">Orar</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#fan-related">Fan-Related</a></li>
+              <li><a href="#video-ytb">Video-uri YTB</a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="text-icon" id="magazin">
+              <a href="#produse">Magazin</a>
+            </div>
+            <div class="imag-icon" id="magazin-mediu">
+              <span class="fas fa-solid fa-store"></span>
+            </div>
+            <ul>
+              <li><a href="#produse">Vestimentatie</a></li>
+              <li><a href="#produse">Accesorii</a></li>
+              <li><a href="#produse">Costume cosplay</a></li>
+              <li><a href="#produse">Creatii fan-made</a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="text-icon">
+              <a href="views/pagini/contact.ejs">Contact</a>
+            </div>
+            <div class="imag-icon">
+              <span class="fas fa-solid fa-headset"></span>
+            </div>
+          </li>
+          <li>
+            <div class="text-icon" id="faq">
+              <a href="#faq">FAQ</a>
+            </div>
+            <div class="imag-icon" id="faq-mediu">
+              <span class="fa-regular fa-envelope"></span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div id="grid-pagina">
+        <section id="welcome">
+          <hgroup>
+            <h2>
+              Bine ati venit
+              <i
+                class="fa-solid fa-gear fa-spin titlu-icon"
+                aria-hidden="true"
+              ></i>
+            </h2>
+            <p class="subtitlu">Prezentarea magazinului nostru</p>
+          </hgroup>
+          <div class="welcome-poze">
+            <figure>
+              <picture>
+                <source
+                  srcset="./resurse/imagini/Freddy_waving-small.jpeg"
+                  media="(max-width:700px)"
+                />
+                <source
+                  srcset="./resurse/imagini/Freddy_waving-medium.jpeg"
+                  media="(max-width:1200px)"
+                />
+                <img
+                  src="./resurse/imagini/Freddy_waving.jpeg"
+                  alt="Freddy Fazbear"
+                  title="Freddy Fazbear întâmpinând fanii"
+                />
+              </picture>
+              <figcaption>Freddy va saluta</figcaption>
+            </figure>
+            <div id="dv-prezentare-1">
+              <div id="dv-prezentare">
+                <picture>
+                  <source
+                    srcset="./resurse/imagini/bear-small.jpeg"
+                    media="(max-width:700px)"
+                  />
+                  <source
+                    srcset="./resurse/imagini/bear-medium.jpeg"
+                    media="(max-width:1200px)"
+                  />
+                  <img
+                    src="./resurse/imagini/bear.jpeg"
+                    alt="Urs animatronic FNAF"
+                    title="Mascota urs FNAF"
+                  />
+                </picture>
+              </div>
+            </div>
+          </div>
+          <p class="intro">
+            Bine ati venit la <b>BOON:The FNAF Store</b>, un loc creat special
+            pentru fanii universului <b>Five Nights at Freddy's</b>!. Aici veti
+            descoperi o gama larga de produse inspirate de povestea <b>FNAF</b>.
+          </p>
+
+          <p>
+            "Misiunea noastra este una simpla: sa aducem lumea FNAF cat mai
+            aproape de fanii sai. Prin acest magazin, ne dorim sa construim o
+            comunitate puternica prin care sa ne aratam aprecierea fata de acest
+            univers."
+          </p>
+
+          <div class="intro-produse">
+            <p>
+              Mai jos veti gasi o lista compusa din categoriile de produse la
+              care va puteti astepta sa le gasiti in magazin:
+            </p>
+
+            <dl>
+              <dt>Produse de imbracaminte</dt>
+              <dd>Hanorace, tricouri, bluze si pantaloni cu modele FNAF</dd>
+              <dt>Costume <i lang="en">cosplay</i></dt>
+              <dd>
+                Costume realizate special pentru evenimente de tip
+                <i lang="en">cosplay</i>
+              </dd>
+              <dt>Accesorii</dt>
+              <dd>Stickere, huse pentru telefon/tableta, insigne, brelocuri</dd>
+              <dt>Plushuri</dt>
+              <dd>
+                Jucarii de plus de diferite dimensiuni cu personajele FNAF
+              </dd>
+              <dt>Seturi <i lang="en">Do It Yourself</i></dt>
+              <dd>Seturi cu care va puteti crea propriul animatronic</dd>
+            </dl>
+          </div>
+
+          <p class="anunt intro">
+            Daca produsul cautat de dumneavoastra nu se regaseste in magazin,
+            puteti sa faceti o cerere si noi vom incerca sa il aducem in
+            magazinul nostru!
+          </p>
+          <hr />
+        </section>
+        <section id="promotii">
+          <h2>
+            <i class="fa-solid fa-tags titlu-icon" aria-hidden="true"></i>
+            Promotii si evenimente
+          </h2>
+          <article>
+            <h3 class="titlu">Deschiderea magazinului</h3>
+            <figure>
+              <img
+                src="resurse/imagini/deschidere.jpeg"
+                alt="Deschiderea magazinului"
+                title="Promotie-Deschiedere"
+              />
+              <figcaption>Eveniment de deschidere</figcaption>
+            </figure>
+            <p>
+              Pentru a sarbatorii deschiderea magazinului
+              <b>BOON:The FNAF Store</b>, oferim reduceri de <b>25%</b> pentru
+              toate produsele din categoria <b>FNAF 1</b>
+            </p>
+            <p>
+              Oferta este valabila pana la sfarsitul lunii <s>Februarie</s
+              ><ins> Martie</ins>
+            </p>
+            <p>
+              Va asteptam atat online, cat si la sediile
+              <abbr title="BOON:The FNAF Store">BOON</abbr>
+            </p>
+          </article>
+          <hr />
+          <article>
+            <h3>EVENIMENT: Golden Freddy</h3>
+            <figure>
+              <a
+                href="https://www.imagenspng.com.br/wp-content/uploads/2023/11/fnaf-freddy-png-13.png"
+              >
+                <img
+                  src="resurse/imagini/golden_freddy.jpeg"
+                  alt="Imagine cu Golden Freddy"
+                  title="Click pentru varianta mai mare"
+                  class="img-mica"
+                />
+              </a>
+            </figure>
+            <p>
+              Daca intrati pe site in zilele de Luni-Vineri intre orele
+              00:00-6:00 aveti sansa sa-l gasiti pe <b>Golden Freddy</b>. Facand
+              click pe acesta puteti primi unele din urmatoarele beneficii:
+            </p>
+            <ol>
+              <li>Reducere de <b>5%</b> la orice produs!</li>
+              <li>
+                Reducere de <b>15%</b> la produsele ce reprezinta un <b>urs</b>
+              </li>
+              <li>Stickere cu <b>Golden Freddy</b></li>
+            </ol>
+            <p>
+              Evenimentul este activ pana la sfaristul lunii <s>Februarie </s
+              ><ins>Martie</ins>
+            </p>
+          </article>
+        </section>
+
+        <section id="produse">
+          <h2>
+            <i class="fa-solid fa-box-open titlu-icon" aria-hidden="true"></i>
+            Produsele noastre
+          </h2>
+          <p>
+            Mai departe puteti gasi categoriile principale de produse pe care le
+            gasiti in magazinul nostru
+          </p>
+          <details>
+            <summary>Produsele vestimentare</summary>
+            <ul>
+              <li>Hoodie-uri</li>
+              <li>Tricouri</li>
+              <li>Bluze</li>
+              <li>Pantaloni de Training</li>
+            </ul>
+          </details>
+          <details>
+            <summary>Accesorii</summary>
+            <ul>
+              <li>Insigne</li>
+              <li>Brelocuri</li>
+              <li>Stickere</li>
+              <li>Huse pentru telefoane si tablete</li>
+              <li>Cani si Termosuri</li>
+              <li>Jucarii de plus</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Costume cosplay</summary>
+            <p>
+              In momentul de fata, de la magazinul nostru puteti cumpara
+              urmatoarele costume:
+            </p>
+            <ul>
+              <li>Costum Freddy</li>
+              <li>Costum Chika</li>
+              <li>Costum Bonie</li>
+              <li>Costum Foxy</li>
+              <li>Costum Golden Freddy</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Creatii "fan-made"</summary>
+          </details>
+        </section>
+
+        <section id="faq">
+          <h2>
+            <i
+              class="fa-solid fa-circle-question titlu-icon"
+              aria-hidden="true"
+            ></i>
+            FAQ
+          </h2>
+          <details>
+            <summary>
+              Cum putem returna un costum daca nu se potriveste marimea?
+            </summary>
+            <p class="raspuns">
+              - Pentru a putea returna un costum, trebuie facuta o cerere in
+              termen de 7 zile de la primirea comenzii. Acest lucru se poate
+              realiza printr-un mail sau sunandu-ne.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Veti aduce produse si din cele mai noi jocuri FNAF?
+            </summary>
+            <p class="raspuns">
+              - Da! Scopul nostru este sa avem o gama cat mai larga de produse
+              din toate jocurile FNAF. De asemenea, puteti face un ticket prin
+              care sa cereti explicit aducerea in magazin al unui anumit produs
+            </p>
+          </details>
+          <details>
+            <summary>Cum pot sa-mi vand propriile produse?</summary>
+            <p class="raspuns">
+              - Aveti nevoie de un cont special de <b>vanzator</b> pentru a face
+              acest lucru. Mai multe detalii puteti gasii aici:
+            </p>
+          </details>
+        </section>
+
+        <section id="orar">
+          <h2>
+            <i class="fa-solid fa-clock titlu-icon" aria-hidden="true"></i> Orar
+          </h2>
+          <table id="tab-orar">
+            <thead>
+              <tr>
+                <th>Perioadă</th>
+                <th>Zi</th>
+                <th>Interval dimineata</th>
+                <th>Pauza de masa</th>
+                <th>Interval seară</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="5">Zile<br />Lucrătoare</td>
+                <td>Luni</td>
+                <td>8-12</td>
+                <td>12-14</td>
+                <td>14-22</td>
+              </tr>
+              <tr>
+                <td>Marti</td>
+                <td>8-12</td>
+                <td>12-14</td>
+                <td>14-22</td>
+              </tr>
+              <tr>
+                <td>Miercuri</td>
+                <td>8-12</td>
+                <td>12-14</td>
+                <td>14-22</td>
+              </tr>
+              <tr>
+                <td>Joi</td>
+                <td>8-12</td>
+                <td>12-14</td>
+                <td>14-22</td>
+              </tr>
+              <tr>
+                <td>Vineri</td>
+                <td>10-12</td>
+                <td>12-14</td>
+                <td>14-18</td>
+              </tr>
+              <tr>
+                <td rowspan="2">Weekend</td>
+                <td>Sambata</td>
+                <td>10-15</td>
+                <td>Inchis</td>
+                <td>Inchis</td>
+              </tr>
+              <tr>
+                <td>Duminica</td>
+                <td>10-15</td>
+                <td>Inchis</td>
+                <td>Inchis</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5">
+                  Sediile <abbr title="BOON:The FNAF Store">BOON</abbr> sunt
+                  inchise cu ocazia sarbatorilor legale!
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5">Magazinul online este mereu accesibil!</td>
+              </tr>
+            </tfoot>
+          </table>
+        </section>
+
+        <section id="anunturi">
+          <h2 class="fg-img">
+            <i class="fa-solid fa-bullhorn titlu-icon" aria-hidden="true"></i>
+            Anunțuri
+          </h2>
+          <ul>
+            <li>
+              <time datetime="2026-03-02T14:00">2 martie 2026, ora 14:00</time>
+              <b>Mentenanta site</b> - Magazinul online va fi inchis pentru
+              mentenanta.
+            </li>
+            <li>
+              <time datetime="2026-03-01T10:00">1 martie 2026, ora 10:00</time>
+              <b>Promotie de deschidere</b> - Incepe promotia de deschidere a
+              magazinului si s-a adaugat evenimentul Golden Freddy!
+            </li>
+          </ul>
+        </section>
+        <section id="fan-related">
+          <hgroup>
+            <h2>
+              <i class="fa-solid fa-users titlu-icon" aria-hidden="true"></i>
+              Fan-Related
+            </h2>
+            <p class="subtitlu">
+              Aici veti putea vedea diferite creatii de arta trimise de alti
+              utilizatori
+            </p>
+          </hgroup>
+          <div id="tabel-scroll">
+            <table id="tab-facts">
+              <caption>
+                Facts :)
+              </caption>
+              <thead>
+                <tr>
+                  <th>Caracteristica</th>
+                  <th>Freddy Fazbear</th>
+                  <th>Bonnie</th>
+                  <th>Chica</th>
+                  <th>Foxy</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>An aparitie model</th>
+                  <td colspan="4">1983</td>
+                </tr>
+                <tr>
+                  <th>Creator</th>
+                  <td>Henry Emily si William Afton</td>
+                  <td>Henry Emily si William Afton</td>
+                  <td>Henry Emily si William Afton</td>
+                  <td>Henry Emily si William Afton</td>
+                </tr>
+                <tr>
+                  <th>Fun fact (Lore)</th>
+                  <td>
+                    Ascunde un cantec (Toreador March) pe care il canta cand
+                    ramane fara putere.
+                  </td>
+                  <td>
+                    Scott Cawthon a avut cosmaruri cu el in timpul dezvoltarii
+                    jocului.
+                  </td>
+                  <td>
+                    Are mereu cu ea un cupcake de jucarie (Carl the Cupcake).
+                  </td>
+                  <td>
+                    Este singurul animatronic care este "Out of Order" (defect)
+                    in mod oficial in restaurant.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Nivel Pericol</th>
+                  <td>
+                    <meter
+                      value="80"
+                      min="0"
+                      max="100"
+                      low="30"
+                      high="70"
+                      optimum="10"
+                      title="Pericol mare"
+                    >
+                      80%
+                    </meter>
+                  </td>
+                  <td>
+                    <meter
+                      value="65"
+                      min="0"
+                      max="100"
+                      low="30"
+                      high="70"
+                      optimum="10"
+                      title="Pericol moderat spre mare"
+                    >
+                      65%
+                    </meter>
+                  </td>
+                  <td>
+                    <meter
+                      value="10"
+                      min="0"
+                      max="100"
+                      low="30"
+                      high="70"
+                      optimum="10"
+                      title="Pericol scazut"
+                    >
+                      10%
+                    </meter>
+                  </td>
+                  <td>
+                    <meter
+                      value="95"
+                      min="0"
+                      max="100"
+                      low="30"
+                      high="70"
+                      optimum="10"
+                      title="Pericol extrem"
+                    >
+                      95%
+                    </meter>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5">
+                    Nota: Informatiile fac parte din seria originala de jocuri.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <figure id="fig-map">
+            <img
+              src="resurse/imagini/map_animatronici.jpeg"
+              alt="Harta animatronici FNAF"
+              usemap="#map-animatronici"
+              title="Click pe un animatronic pentru mai multe detalii"
+            />
+            <map name="map-animatronici">
+              <area
+                shape="rect"
+                coords="0,0,689,623"
+                href="https://freddy-fazbears-pizza.fandom.com/wiki/Golden_Freddy"
+                target="_blank"
+                alt="Golden Freddy - Wiki"
+                title="Deschide pagina wiki pentru Golden Freddy"
+              />
+              <area
+                shape="rect"
+                coords="689,0,1021,623"
+                href="https://freddy-fazbears-pizza.fandom.com/wiki/Foxy"
+                target="_blank"
+                alt="Foxy - Wiki"
+                title="Afla mai multe despre Foxy"
+              />
+            </map>
+            <figcaption>
+              Aici puteti gasi o colectie de animatronici. Pentru a afla mai
+              multe despre lore-ul acestora puteti face click pe ei.
+            </figcaption>
+          </figure>
+        </section>
+        <section id="video-ytb">
+          <h2>
+            <i class="fa-solid fa-video titlu-icon" aria-hidden="true"></i>
+            Clipuri ajutatoare
+          </h2>
+          <div class="video-tabs-container">
+            <div class="tab-buttons">
+              <a
+                href="https://www.youtube.com/embed/h3e9Zv4a6Nw"
+                target="ifr-video"
+                class="tab-btn"
+                >Freddy</a
+              >
+              <a
+                href="https://www.youtube.com/embed/-yOKsQxfy24"
+                target="ifr-video"
+                class="tab-btn"
+                >Bonie</a
+              >
+              <a
+                href="https://www.youtube.com/embed/PaW9QMwWvOA"
+                target="ifr-video"
+                class="tab-btn"
+                >Foxy</a
+              >
+            </div>
+            <iframe
+              class="media-responsive tab-iframe"
+              src="https://www.youtube.com/embed/PaW9QMwWvOA"
+              name="ifr-video"
+              title="Tutoriale DIY FNAF"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share;
+              "
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <h3>Playlist trailere jocuri FNAF</h3>
+          <iframe
+            class="media-responsive"
+            src="https://www.youtube.com/embed/videoseries?list=PLIfD8qlAXjPVgQIQyLaw4alv15uje335i"
+            title="Playlist trailere jocuri FNAF"
+            frameborder="0"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
+            allowfullscreen
+          >
+          </iframe>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <address>
+        <p>Telefon: <a href="tel:+400761132029">+40 761 132 029</a></p>
+
+        <p>
+          Adresa:<br />
+          <a
+            href="https://maps.app.goo.gl/XY3hXu1JhUJfhZ3K8"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Str. Academiei nr. 14 <br />010013 Bucuresti</a
+          >
+        </p>
+        <iframe
+          class="media-responsive media-map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.8437021665796!2d26.09749171552399!3d44.43637177910243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff4770ddbb8b%3A0xc3bba4d232537233!2sFacultatea%20de%20Matematic%C4%83%20%C8%99i%20Informatic%C4%83%20(FMI)!5e0!3m2!1sro!2sro!4v1683100000000!5m2!1sro!2sro"
+          style="border: 0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Harta Facultatea de Matematica si Informatica"
+        ></iframe>
+
+        <p>
+          Email:
+          <a href="mailto:contact@boonfnafstore.ro">contact@boonfnafstore.ro</a>
+        </p>
+
+        <p>
+          WhatsApp:
+          <a href="https://wa.me/40761132029" target="_blank">WhatsApp</a>
+        </p>
+      </address>
+
+      <p>
+        <a href="#" id="link-top" title="Mergi la inceputul paginii">
+          <i
+            id="sageata"
+            class="fa-solid fa-arrow-up fa-flip"
+            aria-hidden="true"
+          ></i>
+        </a>
+      </p>
+
+      <p>
+        <small
+          >Copyright &copy;
+          <time datetime="2026-03-07">7 martie 2026</time> Visan
+          Cristian-Andrei</small
+        >
+      </p>
+
+      <section id="licenta-pdf" style="margin-top: 20px">
+        <h3>Licenta</h3>
+        <object
+          class="media-responsive media-pdf"
+          data="resurse/Licenta/LICENSE.pdf"
+          type="application/pdf"
+        >
+          <p>
+            Browserul dumneavoastra nu suporta vizualizarea fisierelor PDF.
+            Puteti descarca licenta de
+            <a
+              href="resurse/Licenta/LICENSE.pdf"
+              download="Licenta_BOON_Store.pdf"
+              >aici</a
+            >.
+          </p>
+        </object>
+      </section>
+      <blockquote>"I always come back" - William Afton</blockquote>
+      <p id="banner">Acesta este un proiect scolar</p>
+    </footer>
+  </body>
+</html>
