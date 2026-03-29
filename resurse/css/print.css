@@ -1,0 +1,89 @@
+@page :left {
+  margin-left: 3cm;
+  margin-right: 1cm;
+}
+
+@page :right {
+  margin-left: 1cm;
+  margin-right: 3cm;
+}
+
+@media print {
+  body {
+    margin: 0;
+  }
+  main {
+    margin: 0 !important;
+  }
+
+  #banner {
+    display: block !important;
+    position: relative;
+    width: 70%;
+    left: 15%;
+    text-align: center;
+    font-size: 2.25rem;
+    border: 1px solid black;
+  }
+
+  img,
+  video,
+  iframe,
+  object,
+  embed,
+  figure,
+  canvas,
+  .video-tabs-container {
+    display: none !important;
+  }
+
+  #link-top {
+    display: none !important;
+  }
+
+  #grid-pagina {
+    display: block;
+  }
+  #grid-pagina > section {
+    display: block;
+    margin-bottom: 0.5rem;
+    break-inside: avoid;
+  }
+  a {
+    text-decoration: none;
+  }
+  nav {
+    display: block !important;
+    width: 100% !important;
+    break-after: page;
+  }
+  ul.meniu {
+    display: block;
+    width: 100% !important;
+    position: relative;
+  }
+  ul.meniu li {
+    display: block;
+    width: 100% !important;
+  }
+  footer {
+    break-before: page;
+  }
+  .watermark {
+    display: block;
+    position: fixed;
+
+    width: 4cm;
+    height: 1cm;
+    font-size: 11px;
+
+    bottom: 0;
+    right: 0;
+    text-align: center;
+
+    border: 3px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    opacity: 0.4;
+  }
+}
