@@ -1,0 +1,23 @@
+{
+  "name": "boon",
+  "version": "1.0.0",
+  "description": "\"BOON: The FNAF Store\" este un magazin de costume si merch FNAF facut pentru oricine este interesat de acest univers. Magazinul contine costume special realizate pentru cosplay, haine tematice, plushuri precum si seturi DIY pentru cei interesati sa-ti creeze propriul animatronic asa cum si-l doresc.",
+  "homepage": "https://github.com/VisanCristian/Tehnici-WEB#readme",
+  "bugs": {
+    "url": "https://github.com/VisanCristian/Tehnici-WEB/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VisanCristian/Tehnici-WEB.git"
+  },
+  "license": "ISC",
+  "author": "Visan Cristian-Andrei",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^5.0.1"
+  }
+}

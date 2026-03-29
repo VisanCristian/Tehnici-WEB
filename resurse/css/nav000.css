@@ -1,5 +1,4 @@
-ul.meniu ul,
-ul.meniu {
+ul.meniu ul, ul.meniu {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -24,10 +23,7 @@ nav {
   align-items: center;
   border: 2px solid var(--border-glow);
   border-radius: 10px;
-  box-shadow:
-    0 0 0.25rem var(--accent-magenta),
-    0 0 0.875rem var(--accent-purple),
-    0 0 1.25rem var(--accent-indigo);
+  box-shadow: 0 0 0.25rem var(--accent-magenta), 0 0 0.875rem var(--accent-purple), 0 0 1.25rem var(--accent-indigo);
   background-color: black;
 }
 nav img {
@@ -95,10 +91,6 @@ ul.meniu li::after {
   transition: width 0.3s ease;
 }
 
-#banner {
-  display: none;
-}
-
 @keyframes animatie_submeniu {
   0% {
     opacity: 0;
@@ -112,5 +104,18 @@ ul.meniu li::after {
     transform: scale(1, 1);
   }
 }
+nav {
+  --latime-buton: 80px;
+}
 
-/*# sourceMappingURL=nav.css.map */
+ul.meniu ul li {
+  font-size: 10px;
+}
+ul.meniu .imag-icon {
+  display: block;
+}
+ul.meniu .text-icon {
+  display: none;
+}
+
+/*# sourceMappingURL=nav000.css.map */

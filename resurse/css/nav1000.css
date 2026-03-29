@@ -1,0 +1,15 @@
+nav {
+  --latime-buton: 80px;
+}
+
+ul.meniu ul li {
+  font-size: 10px;
+}
+ul.meniu .imag-icon {
+  display: block;
+}
+ul.meniu .text-icon {
+  display: none;
+}
+
+/*# sourceMappingURL=nav1000.css.map */

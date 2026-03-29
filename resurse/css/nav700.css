@@ -1,0 +1,66 @@
+header nav {
+  --latime-buton: 100%;
+  display: block;
+  padding-right: 0;
+}
+
+#ch-menu {
+  display: block;
+}
+
+#hamburger img {
+  width: 100px;
+  height: 100px;
+}
+
+ul.meniu .text-icon {
+  display: block;
+}
+ul.meniu div#acasa {
+  display: none;
+}
+ul.meniu {
+  display: none;
+  position: absolute;
+  width: 100%;
+  transform-origin: left top;
+  animation: afis_meniu 0.5s linear;
+}
+ul.meniu li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+ul.meniu li::after {
+  content: none;
+}
+ul.meniu ul {
+  transform-origin: center top;
+}
+ul.meniu ul li {
+  background-color: var(--accent-cyan);
+}
+ul.meniu > li:hover ul {
+  top: 100%;
+  bottom: 0;
+}
+
+#ch-menu:checked + ul.meniu {
+  display: block;
+  position: relative;
+  width: 100vw;
+}
+
+@keyframes afis_meniu {
+  0% {
+    transform: rotate(-90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=nav700.css.map */
