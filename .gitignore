@@ -1,7 +1,5 @@
-AGENTS.md
-cerinte.docx
-cerinte.txt
-./css-example/
-./Planificare
-./nimic/
-./nimic/*
+node_modules/
+temp/
+logs/
+fisiere_uploadate/
+backup/

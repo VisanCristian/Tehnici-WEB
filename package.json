@@ -11,6 +11,25 @@
     "url": "git+https://github.com/VisanCristian/Tehnici-WEB.git"
   },
   "license": "ISC",
+  "keywords": [
+    "fnaf",
+    "boon",
+    "boon-the-fnaf-store",
+    "magazin",
+    "chika",
+    "bonie",
+    "foxy",
+    "freddy",
+    "costume",
+    "hanorace",
+    "tricouri",
+    "pantaloni",
+    "huse-de-telefon",
+    "stickere",
+    "seturi-diy",
+    "five-nights-at-freddys",
+    "fnaf-1"
+],
   "author": "Visan Cristian-Andrei",
   "type": "commonjs",
   "main": "index.js",
@@ -18,6 +37,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "ejs": "^5.0.1"
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "sass": "^1.99.0"
   }
 }

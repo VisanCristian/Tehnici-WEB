@@ -1,0 +1,19 @@
+#video-vtt {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+#video-fnaf {
+  width: 70%;
+  min-width: 30%;
+  max-width: 900px;
+}
+
+::cue {
+  background-color: white;
+  color: var(--accent-blue);
+  font-style: normal;
+  text-align: center;
+
+}
