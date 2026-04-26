@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="ro" data-bs-theme="dark">
     <head>
     <meta
       name="keywords"
@@ -7,40 +7,52 @@
     />
 
     <title>BOON: The FNAF Store - Contact</title>
-    <link rel="stylesheet" type="text/css" href="/resurse/css/contact.css" />
     <%- include('../fragmente/head.ejs') %>
+    <link rel="stylesheet" type="text/css" href="/resurse/css/contact.css" />
+    <link rel="stylesheet" type="text/css" href="/resurse/css/efecte.css"  /> 
     </head>
     <body>  
     <header>
     <%- include('../fragmente/header.ejs') %>
     </header>
     <main>
-        <section id="section-contact">
-            <p>In cazul in care intampinati probleme cu comenzile dumneavoastra puteti oricand sa ne sunati sau sa ne trimiteti un mail.</p>
-            <div id="date-contact">
-                <p>Mai jos puteti gasi diferite modalitati prin care ne puteti contacta.</p>
-            <address>
-                <p>Telefon: <a href="tel:+400761132029">+40 761 132 029</a></p>
-
-                <p>
-                    Adresa:<br />
-                    <a
-                        href="https://maps.app.goo.gl/XY3hXu1JhUJfhZ3K8"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >Str. Academiei nr. 14 <br />010013 Bucuresti</a
-                    >
-                </p>
-                <p>
-                    Email:
-                    <a href="mailto:contact@boonfnafstore.ro">contact@boonfnafstore.ro</a>
-                </p>
-
-                <p>
-                    WhatsApp:
-                <a href="https://wa.me/40761132029" target="_blank">WhatsApp</a>
+        <section id="section-contact" class="container py-2">
+            <div id="reflexie">
+                <h2 class="text-info" id="h2-contact">Contact</h2>
+                <div id="h2-reflectat">
+                    <h2>Contact</h2>
+                </div> 
+            </div>
+            <p class="text-info">In cazul in care intampinati probleme cu comenzile dumneavoastra puteti oricand sa ne sunati sau sa ne trimiteti un mail.</p>
+            <div id="date-contact" class="mt-3">
+                <p class="text-info mb-3">Mai jos puteti gasi diferite modalitati prin care ne puteti contacta.</p>
+                <address class="mb-0">
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 g-3">
+                    <p class="col mb-0">
+                        Telefon:<br />
+                        <a href="tel:+400761132029">+40 761 132 029</a>
                     </p>
-            </address>
+
+                    <p class="col mb-0">
+                        Adresa:<br />
+                        <a
+                            href="https://maps.app.goo.gl/XY3hXu1JhUJfhZ3K8"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >Str. Academiei nr. 14 <br />010013 Bucuresti</a>
+                    </p>
+
+                    <p class="col mb-0">
+                        Email:<br />
+                        <a href="mailto:contact@boonfnafstore.ro">contact@boonfnafstore.ro</a>
+                    </p>
+
+                    <p class="col mb-0">
+                        WhatsApp:<br />
+                        <a href="https://wa.me/40761132029" target="_blank">WhatsApp</a>
+                    </p>
+                  </div>
+                </address>
             </div>
         </section>
     </main>

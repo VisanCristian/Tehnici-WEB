@@ -1,0 +1,117 @@
+{
+    "cale_galerie": "resurse/imagini/galerie",
+    "imagini": [
+        {
+            "fisier_imagine": "Chica.webp",
+            "nume_poza": "FNAF 1 Chica",
+            "continut_alternativ": "Chica",
+            "descriere_poza": "Acesta este modelul animatronului Chica din primul joc Five Nights at Freddy's.",
+            "intervale_zile": [["Luni", "Joi"]]
+        },
+        {
+            "fisier_imagine": "Foxy_Fnaf_1.webp",
+            "nume_poza": "FNAF 1 Foxy",
+            "continut_alternativ": "Foxy",
+            "descriere_poza": "Acesta este modelul animatronului Foxy din Five Nights at Freddy's 1.",
+            "intervale_zile": [["Luni", "Joi"]]
+        },
+        {
+            "fisier_imagine": "Freddy_Fazbear.webp",
+            "nume_poza": "FNAF 1 Freddy",
+            "continut_alternativ": "Freddy Fazbear",
+            "descriere_poza": "Acesta este modelul animatronului Freddy Fazbear din Five Nights at Freddy's 1.",
+            "intervale_zile": [["Luni", "Joi"]]
+        },
+        {
+            "fisier_imagine": "Extra_Springtrap_1.webp",
+            "nume_poza": "FNAF 3 Springtrap",
+            "continut_alternativ": "Springtrap",
+            "descriere_poza": "Acesta este modelul animatronului Springtrap din Five Night's at Freddy's 3.",
+            "intervale_zile": [["Luni", "Joi"]]
+        },
+        {
+            "fisier_imagine": "Toy_bonnie.webp",
+            "nume_poza": "FNAF 2 Toy Bonnie",
+            "continut_alternativ": "Toy Bonnie",
+            "descriere_poza": "Acesta este modelul animatronului Toy Bonnie din Five Nights at Freddy's 2.",
+            "intervale_zile": [["Luni", "Marti"]]
+        },
+        {
+            "fisier_imagine": "Toy_chica.webp",
+            "nume_poza": "FNAF 2 Toy Chica",
+            "continut_alternativ": "Toy Chica",
+            "descriere_poza": "Acesta este modelul animatronului Toy Chica din Five Nights at Freddy's 2.",
+            "intervale_zile": [["Luni", "Marti"]]
+        },
+        {
+            "fisier_imagine": "Toy_freddy.webp",
+            "nume_poza": "FNAF 2 Toy Freddy",
+            "continut_alternativ": "Toy Freddy",
+            "descriere_poza": "Acesta este modelul animatronului Toy Freddy din Five Nights at Freddy's 2.",
+            "intervale_zile": [["Luni", "Marti"]]
+        },
+        {
+            "fisier_imagine": "Nightmare_Bonnie.webp",
+            "nume_poza": "FNAF 4 Nightmare Bonnie",
+            "continut_alternativ": "Nightmare Bonnie",
+            "descriere_poza": "Acesta este varianta Nightmare a animatronului Bonnie din Five Nigths at Freddy's 4.",
+            "intervale_zile": [["Miercuri", "Duminica"]]
+        },
+        {
+            "fisier_imagine": "Nightmare_Chica.webp",
+            "nume_poza": "FNAF 4 Nightmare Chica",
+            "continut_alternativ": "Nightmare Chica",
+            "descriere_poza": "Acesta este varianta Nightmare a animatronului Chica din Five Nigths at Freddy's 4.",
+            "intervale_zile": [["Miercuri", "Duminica"]]
+        },
+        {
+            "fisier_imagine": "Nightmare_Foxy.webp",
+            "nume_poza": "FNAF 4 Nightmare Foxy",
+            "continut_alternativ": "Nightmare Foxy",
+            "descriere_poza": "Acesta este varianta Nightmare a animatronului Foxy din Five Nights at Freddy's 4.",
+            "intervale_zile": [["Miercuri", "Duminica"]]
+        },
+        {
+            "fisier_imagine": "Nightmare_animatronic.webp",
+            "nume_poza": "FNAF 4 Nightmare",
+            "continut_alternativ": "Nightmare",
+            "descriere_poza": "Acesta este varianta Nightmare a animatronicului Freddy din Five Nights at Freddy's 4.",
+            "intervale_zile": [["Vineri", "Duminica"]]
+        },
+        {
+            "fisier_imagine": "Nightmarrionette.webp",
+            "nume_poza": "FNAF 4 Nightmarrionette",
+            "continut_alternativ": "Nightmarrionette",
+            "descriere_poza": "Acesta este modelul animatronului Nightmarrionette din Five Nights at Freddy's 4.",
+            "intervale_zile": [["Vineri", "Duminica"]]
+        },
+        {
+            "fisier_imagine": "Nightmare_Fredbear.webp",
+            "nume_poza": "FNAF 4 Nightmare Fredbear",
+            "continut_alternativ": "Nightmare Fredbear",
+            "descriere_poza": "Acesta este varianta Nightmare a animatronicului Freddy din Five Nights at Freddy's 4.",
+            "intervale_zile": [["Vineri", "Duminica"]]
+        },
+        {
+            "fisier_imagine": "Mangle.webp",
+            "nume_poza": "FNAF 2 Mangle",
+            "continut_alternativ": "Mangle",
+            "descriere_poza": "Acesta este modelul animatronului Mangle din Five Nights at Freddy's 2.",
+            "intervale_zile": [["Luni", "Marti"]]
+        },
+        {
+            "fisier_imagine": "Bonnie_Rabbit.webp",
+            "nume_poza": "FNAF 1 Bonnie",
+            "continut_alternativ": "Bonnie",
+            "descriere_poza": "Acesta este modelul animatronului Bonnie din Five Nights at Freddy's 1.",
+            "intervale_zile": [["Luni", "Joi"]]
+        },
+        {
+            "fisier_imagine": "Nightmare_Freddy.webp",
+            "nume_poza": "FNAF 4 Freddy",
+            "continut_alternativ": "Freddy",
+            "descriere_poza": "Acesta este modelul animatronicului Freddy din Five Nights at Freddy's 4.",
+            "intervale_zile": [["Vineri", "Duminica"]]
+        }
+    ]
+}

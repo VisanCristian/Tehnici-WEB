@@ -1,0 +1,75 @@
+$nr-poze: 16;
+.galerie-statica {
+  display: grid;
+  grid-row-gap: 0.5rem;
+  grid-column-gap: 0.5rem;
+  figure {
+    img {
+        width: 100%;
+        filter: sepia(100%);
+    }
+
+    figcaption {
+        text-shadow: none;
+        color: white;
+    }
+
+    &:hover {
+        img {
+            filter: none;
+            transition: filter 0.8s linear;
+        }
+        figcaption {
+            color: #19C0E0;
+            text-shadow: 1px 1px 2px #19C0E0,
+                0 0 1em #E30DEB,
+                0 0 0.4em #E30DEB;
+            transition: color 0.8s linear, text-shadow 0.8s linear;
+        }
+    }
+  }
+}
+
+.galerie-statica {
+  grid-template-columns: repeat(3, 1fr);
+
+  $i: 1;
+  @while $i < $nr-poze {
+    $a: (($i - 1) / 2) + 1;
+    $b: null;
+    $c: null;
+    @if (($i - 1) / 2) % 3 == 0 {
+      $b: 1;
+      $c: 2;
+    } @else if (($i - 1) / 2) % 3 == 1 {
+      $b: 1;
+      $c: 3;
+    } @else if (($i - 1) / 2) % 3 == 2 {
+      $b: 2;
+      $c: 3;
+    }
+    figure:nth-child(#{$i}) {
+      grid-area: #{$a}/#{$b}/#{($a + 1)}/#{($b + 1)};
+    }
+    figure:nth-child(#{$i + 1}) {
+      grid-area: #{$a}/#{$c}/#{($a + 1)}/#{($c + 1)};
+    }
+    $i: $i + 2;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .galerie-statica {
+    grid-template-columns: repeat(2, 1fr);
+    figure:nth-child(n) {
+      grid-area: auto;
+    }
+  }
+}
+@media screen and (max-width: 700px) {
+  .galerie-statica {
+    grid-template-columns: 1fr;
+    figure:nth-child(n) {
+      grid-area: auto;
+    }
+  }
+}

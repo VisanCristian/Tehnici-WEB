@@ -1,0 +1,63 @@
+@use "../../node_modules/bootstrap/scss/bootstrap.scss" with (
+  $primary: black,
+  $secondary: white,
+  $info: #19c0e0,
+  $link-color: #19c0e0,
+  $link-hover-color: #e30deb,
+  $font-family-sans-serif: (
+    "Exo 2",
+    sans-serif,
+  ),
+  $h2-font-size: 2rem,
+  $border-width: 0.125rem,
+  $border-radius: 0.75rem,
+  $border-radius-lg: 1rem,
+  $grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 700px,
+    lg: 1000px,
+    xl: 1200px,
+    xxl: 1400px,
+  ),
+  $container-max-widths: (
+    sm: 540px,
+    md: 680px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px,
+  )
+);
+
+:root,
+[data-bs-theme="dark"] {
+  color-scheme: dark;
+  --bs-body-bg: #000000;
+  --bs-body-color: #ffffff;
+  --bs-primary: #000000;
+  --bs-primary-rgb: 0, 0, 0;
+  --bs-secondary: #ffffff;
+  --bs-secondary-rgb: 255, 255, 255;
+  --bs-info: #19c0e0;
+  --bs-info-rgb: 25, 192, 224;
+  --bs-link-color: #19c0e0;
+  --bs-link-color-rgb: 25, 192, 224;
+  --bs-link-hover-color: #e30deb;
+  --bs-link-hover-color-rgb: 227, 13, 235;
+}
+
+[data-bs-theme="light"] {
+  color-scheme: light;
+  --bs-body-bg: orange;
+  --bs-body-color: #ffffff;
+  --bs-primary: #000000;
+  --bs-primary-rgb: 0, 0, 0;
+  --bs-secondary: #ffffff;
+  --bs-secondary-rgb: 255, 255, 255;
+  --bs-info: #19c0e0;
+  --bs-info-rgb: 25, 192, 224;
+  --bs-link-color: #19c0e0;
+  --bs-link-color-rgb: 25, 192, 224;
+  --bs-link-hover-color: #e30deb;
+  --bs-link-hover-color-rgb: 227, 13, 235;
+}

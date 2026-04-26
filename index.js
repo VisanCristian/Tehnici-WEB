@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const sass = require("sass");
+const sharp = require("sharp");
 
 app = express();
 app.set("view engine", "ejs")
@@ -42,6 +43,31 @@ function initErori() {
     }
 }
 
+function initImagini() {
+    var continut = fs.readFileSync(path.join(__dirname, "resurse/json/galerie.json")).toString("utf-8");
+    obGlobal.obImagini = JSON.parse(continut);
+
+    // resize cu sharp
+
+    let vImagini = obGlobal.obImagini.imagini;
+    let caleGalerie = obGlobal.obImagini.cale_galerie;
+    let caleAbs = path.join(__dirname, caleGalerie);
+    let caleAbsMediu = path.join(caleAbs, "mediu");
+    if (!fs.existsSync(caleAbsMediu)) {
+        fs.mkdirSync(caleAbsMediu);
+    }
+
+    for (let img of vImagini) {
+        let [numeFis, ext] = img.fisier_imagine.split(".");
+        let caleImgAbs = path.join(caleAbs, img.fisier_imagine);
+        let caleImgMediuAbs = path.join(caleAbsMediu, numeFis + "_mediu" + ".webp");
+        sharp(caleImgAbs).resize(300).toFile(caleImgMediuAbs);
+        img.fisier_imagine_mediu = path.join("/", caleGalerie, "mediu", numeFis + "_mediu" + ".webp");
+        img.fisier_imagine = path.join("/", caleGalerie, img.fisier_imagine);
+    }
+    console.log("Obiect imagini", obGlobal.obImagini);
+}
+
 function checkFiles() {
     let caleErori = path.join(__dirname, "resurse/json/erori.json");
     if (!fs.existsSync(caleErori)) {
@@ -55,7 +81,7 @@ function checkFiles() {
     if (erori.info_erori == undefined) {
         console.error(
             "INFO: Proprietatea 'info_erori' lipseste din 'resurse/json/erori.json'.\n" +
-            '  → Adaugati: "info_erori": [{ "identificator": "...", "imagine": "...", ... }]'
+            '  → Adaugati: "info_erori": [{ "identificator": "...", "status": "...", "titlu": "...", "text:": "...", "imagine": "..."}]'
         );
     }
 
@@ -170,8 +196,10 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
     });
 }
 
-vFisiere = fs.readdirSync(obGlobal.folderScss);
 
+
+// Generare fisiere CSS din SCSS
+vFisiere = fs.readdirSync(obGlobal.folderScss);
 for (let numeFis of vFisiere) {
     if (path.extname(numeFis) == ".scss") {
         compileazaScss(numeFis);
@@ -190,7 +218,8 @@ fs.watch(obGlobal.folderScss, function(eveniment, numeFis) {
 
 app.get(["/", "/index", "/home"], function(req, res) {
     res.render("pagini/index", {
-        ip: req.ip
+        ip: req.ip,
+        imagini: obGlobal.obImagini.imagini
     });
 });
 
@@ -239,6 +268,7 @@ app.get("/*pagina", function(req, res) {
 
 
 initErori();
+initImagini();
 checkFiles();
 
 

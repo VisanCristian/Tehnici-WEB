@@ -22,10 +22,12 @@ header h1 {
 }
 
 footer {
-  background: linear-gradient(180deg,
-      #050406,
-      #170c32 45%,
-      var(--accent-purple));
+  background: linear-gradient(
+    180deg,
+    #050406,
+    #170c32 45%,
+    var(--accent-purple)
+  );
   margin-top: 2.5rem;
   padding: 1.75rem 0 2rem;
   box-shadow: 0 0 2.2rem var(--accent-magenta);
@@ -106,7 +108,7 @@ body {
   --accent-pink: #dc63e0;
   --spacing-page: 120px;
   --border-spacing: 0.125rem;
-  background-color: var(--bg-primary);
+  background-color: var(--bs-body-bg);
   color: var(--text-primary);
   font-family: "Exo 2", sans-serif;
   font-size: 1.2rem;
@@ -158,7 +160,7 @@ main {
     "faq produse video-ytb video-ytb";
 }
 
-#grid-pagina>* {
+#grid-pagina > * {
   border: 0.0625rem solid var(--border-glow);
   border-radius: 0.75rem;
   box-shadow:
@@ -180,8 +182,8 @@ main {
   justify-content: space-between;
 }
 
-.welcome-poze>figure,
-.welcome-poze>#dv-prezentare-1 {
+.welcome-poze > figure,
+.welcome-poze > #dv-prezentare-1 {
   width: calc(50% - 0.5rem);
   min-width: 0;
   margin: 0;
@@ -207,8 +209,8 @@ main {
     flex-direction: column;
   }
 
-  .welcome-poze>figure,
-  .welcome-poze>#dv-prezentare-1 {
+  .welcome-poze > figure,
+  .welcome-poze > #dv-prezentare-1 {
     width: 100%;
   }
 }
@@ -509,9 +511,11 @@ table {
 
 #link-top:hover::before {
   transform: rotate(90deg);
-  background: linear-gradient(135deg,
-      var(--accent-purple) 25%,
-      var(--bg-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-purple) 25%,
+    var(--bg-dark) 100%
+  );
   box-shadow:
     inset 0 0 0.625rem var(--bg-primary),
     0 0 0 0.19rem var(--bg-dark);
@@ -535,7 +539,6 @@ table {
   text-shadow: none;
 }
 
-
 a:visited {
   color: var(--accent-magenta);
 }
@@ -552,11 +555,13 @@ a[href^="http"]:hover::before {
 
 main a {
   position: relative;
-  background-image: radial-gradient(ellipse,
-      var(--accent-cyan) 0%,
-      var(--accent-cyan) 40%,
-      transparent 80%,
-      transparent 100%);
+  background-image: radial-gradient(
+    ellipse,
+    var(--accent-cyan) 0%,
+    var(--accent-cyan) 40%,
+    transparent 80%,
+    transparent 100%
+  );
   background-position: center;
   background-size: 0;
   background-repeat: no-repeat;
