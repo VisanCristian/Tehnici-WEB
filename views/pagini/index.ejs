@@ -436,23 +436,11 @@
         </section>
         <section class="galerie-statica">
           <% let mapZile=new Map([["Luni", 1], ["Marti", 2], ["Miercuri", 3], ["Joi", 4], ["Vineri", 5], ["Sambata", 6],
-            ["Duminica", 7]]);
-            let imagini_de_afisat = [];
-            for (let img of locals.imagini) {
-              for (let interval of img.intervale_zile) {
-                let zi = (new Date()).getDay();
-                if (zi == 0 ) zi = 7;
-                if (zi >= mapZile.get(interval[0]) && zi <= mapZile.get(interval[1]) || 1 == 1) {
-                  imagini_de_afisat.push(img);
-                  break;
-                }
-              }
-            } 
-            console.log(imagini_de_afisat);
-            if (imagini_de_afisat.length % 2 != 0) {
-              imagini_de_afisat.pop();
-            }
-            for (let img of imagini_de_afisat) { %>
+            ["Duminica", 7]]); let imagini_de_afisat=[]; for (let img of locals.imagini) { for (let interval of
+            img.intervale_zile) { let zi=(new Date()).getDay(); if (zi==0 ) zi=7; if (zi>= mapZile.get(interval[0]) &&
+            zi <= mapZile.get(interval[1]) || 1==1) { imagini_de_afisat.push(img); break; } } }
+              console.log(imagini_de_afisat); if (imagini_de_afisat.length % 2 !=0) { imagini_de_afisat.pop(); } for
+              (let img of imagini_de_afisat) { %>
               <figure class="fig-galerie-statica">
                 <picture>
                   <source srcset="<%- img.fisier_imagine_mic %>" media="(max-width:700px)">
@@ -466,7 +454,7 @@
               %>
         </section>
       </section>
-      <section id="video-ytb">
+      <section id=" video-ytb">
                   <h2>
                     <i class="fa-solid fa-video titlu-icon" aria-hidden="true"></i>
                     Clipuri ajutatoare

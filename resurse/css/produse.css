@@ -1,0 +1,100 @@
+main h2 {
+  padding-top: 0.5rem;
+  text-align: center;
+}
+main #container-produse {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 1rem;
+}
+main #container-produse article {
+  flex: 0 1 calc(50% - 2rem);
+  min-width: min(100%, 20rem);
+  padding: 1rem;
+  box-sizing: border-box;
+  position: relative;
+  border: 0.1rem solid var(--accent-pink);
+  border-radius: 0.6rem;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  box-shadow: 0 0 0.2rem var(--accent-pink), 0 0 0.5rem var(--accent-magenta), 0 0 0.8rem var(--accent-purple);
+  display: flex;
+  flex-direction: column;
+}
+main #container-produse article h3 {
+  font-size: 1.25rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--accent-pink);
+}
+main #container-produse article > a {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  text-decoration: none;
+  background: none !important;
+  border: none !important;
+  outline: none;
+}
+main #container-produse article > a::before, main #container-produse article > a::after {
+  display: none;
+}
+main #container-produse article .produs-detalii {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+main #container-produse article .produs-detalii table {
+  font-size: 0.85rem;
+  border-collapse: separate;
+  border-spacing: 0.2rem;
+  flex: 1 1 50%;
+  min-width: 10rem;
+  table-layout: fixed;
+}
+main #container-produse article .produs-detalii table th {
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 0.1rem solid var(--accent-pink);
+  padding: 0.2rem;
+}
+main #container-produse article .produs-detalii table td {
+  text-align: center;
+  padding: 0.2rem;
+  word-wrap: break-word;
+}
+main #container-produse article .produs-detalii img {
+  width: 15rem;
+  min-width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--accent-pink);
+}
+main #container-produse article .descriere {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  text-align: justify;
+  overflow-y: auto;
+  caption-side: bottom;
+}
+main #container-produse article .categorie {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+main #container-produse article .categorie p {
+  margin: 0;
+}

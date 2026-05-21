@@ -1,0 +1,92 @@
+<DOCTYPE html>
+    <html lang="ro" data-bs-theme="dark">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords"
+            content="FNAF, BOON, BOON:The FNAF Store, magazin, Chika, Bonie, Foxy, Freddy, costume, hanorace, tricouri, pantaloni, huse de telefon, stickere, seturi DIY, Five Nights at Freddy's, FNAF 1" />
+
+        <title>BOON: The FNAF Store - Produse</title>
+        <%- include('../fragmente/head.ejs') %>
+            <link rel="stylesheet" type="text/css" href="/resurse/css/produse.css" />
+            <link rel="stylesheet" type="text/css" href="/resurse/css/efecte.css" />
+    </head>
+
+    <body>
+        <header>
+            <%- include('../fragmente/header.ejs') %>
+        </header>
+
+        <main>
+            <h2> Magazin </h2>
+            <section id="container-produse">
+                <% for(produs of locals.produse) { %>
+                    <article class="produs <%- produs.categorie %>" id="ent<%- produs.id %>">
+                        <h3 id="produs-nume"><%-produs.nume %>
+                                <% if (produs.este_set) { %> (SET) <%} %>
+                        </h3>
+                        <div class="produs-detalii">
+                            <table class="produs-tabel">
+                                <thead>
+                                    <th>Pret</th>
+                                    <th>Joc</th>
+                                    <th>Personaje</th>
+                                    <th>Poate fi gasit in magazin pana la data de</th>
+                                    <th>Set</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><%- produs.pret %> RON</td>
+                                        <td><%- produs.joc_sursa %></td>
+                                        <td>
+                                            <% let personaje=[]; if (produs.personaje_asociate) { for (let personaj of
+                                                produs.personaje_asociate) { if (personaj) personaje.push(personaj); } }
+                                                personaje=personaje.join(", "); %>
+                                            <%- personaje %>
+                                        </td>
+                                        <td>
+                                            <% if (produs.disponibil_online_pana) {
+                                                const zileSapt = [" Duminică", "Luni" , "Marți" , "Miercuri" , "Joi"
+                                                , "Vineri" , "Sâmbătă" ]; const luniAn=[ "Ianuarie" , "Februarie"
+                                                , "Martie" , "Aprilie" , "Mai" , "Iunie" , "Iulie" , "August"
+                                                , "Septembrie" , "Octombrie" , "Noiembrie" , "Decembrie" ]; let d=new
+                                                Date(produs.disponibil_online_pana); let zi=d.getDate(); let
+                                                ziSapt=zileSapt[d.getDay()]; let luna=luniAn[d.getMonth()]; let
+                                                an=d.getFullYear(); let isoMonth=String(d.getMonth() +
+                                                1).padStart(2, '0' ); let isoDay=String(d.getDate()).padStart(2, '0' );
+                                                let isoDate=`${an}-${isoMonth}-${isoDay}`; %>
+                                                <time datetime="<%= isoDate %>">
+                                                    <%= `${zi}(${ziSapt})/${luna}/${an}` %>
+                                                </time>
+                                                <% } else { %>
+                                                    Nelimitat
+                                                    <% } %>
+                                        </td>
+                                        <td><%-produs.este_set %></td>
+                                    </tr>
+                                </tbody>
+                                <caption class="descriere"><%- produs.descriere %></caption>
+                            </table>
+                            <img src="<%-produs.imagine_cale %>" alt="imagine">
+                        </div>
+                        <div class="categorie">
+                            <p>CATEGORIE: <%- produs.categorie %></p>
+                            <% if (produs.subcategorie) { %> <p>SUBCATEGORIE: <%- produs.subcategorie %></p> <% } %>
+                            <% if (produs.reducere_pct) { %>
+                                <% let pretFinal=(produs.pret * (1 - produs.reducere_pct / 100)).toFixed(2); %>
+                                <p>OFERTA: <strike><%- produs.pret %> RON</strike> -> <%- pretFinal %> RON</p>
+                            <% } %>
+                        </div>
+                        <a href="/produse/produs/<%-produs.id %>"> </a>
+                    </article>
+                    <%} %>
+            </section>
+        </main>
+
+        <footer>
+            <%- include('../fragmente/footer.ejs') %>
+        </footer>
+    </body>
+
+    </html>

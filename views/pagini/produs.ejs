@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BOON: The FNAF Store - <%- locals.produs.nume %>
+    </title>
+    <%- include('../fragmente/head.ejs') %>
+        <link rel="stylesheet" type="text/css" href="/resurse/css/produs.css" />
+        <link rel="stylesheet" type="text/css" href="/resurse/css/efecte.css" />
+</head>
+
+<body>
+    <header>
+        <%- include('../fragmente/header.ejs') %>
+    </header>
+    <main>
+        <h2>Produs - <%- locals.produs.nume %> </h2>
+        <div class="produs-main">
+            <img src="<%- locals.produs.cale_baza %>" alt="<%- locals.produs.nume %>">
+            <p class="descriere"> <%- locals.produs.descriere %></p>
+        </div>
+        <div class="produs-tag">
+            <p>Categorie: <%- locals.produs.categorie %></p>
+            <% if (locals.produs.subcategorie) { %>
+                <p>Subcategorie: <%- locals.produs.subcategorie %></p>
+                <%}%>
+        </div>
+        <ul class="info-produs">
+            <li>
+                <div class="pret">
+                    <p>
+                        <% if (locals.produs.reducere_pct) { %>
+                            <% let pretFinal=(locals.produs.pret * (1 - locals.produs.reducere_pct / 100)).toFixed(2);
+                                %>
+                                Pret: <strike><%- locals.produs.pret %> RON</strike> -> <%- pretFinal %> RON
+                                    <% } else { %>
+                                        Pret: <%- locals.produs.pret %> RON
+                                            <% } %>
+                    </p>
+                    <% if (locals.produs.reducere_pct) { %>
+                        <p>Reducere: <%- locals.produs.reducere_pct %></p>
+                        <%}%>
+                </div>
+            </li>
+            <li>Joc: <%- locals.produs.joc_sursa %></li>
+            <li>
+                <% let personaje=[]; if (locals.produs.personaje_asociate) { for (let personaj of
+                    locals.produs.personaje_asociate) { if (personaj) personaje.push(personaj); } } %>
+                    Personaje asociate produsului: <%- personaje.length> 0 ? personaje.join(', ') : 'Niciun personaj' %>
+            </li>
+            <li>ATENTIE! Disponibil online pana la data de:
+                <% if (locals.produs.disponibil_online_pana) {
+                    const zileSapt = ["Duminică", "Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă"];
+                    const luniAn = ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"];
+                    let d = new Date(locals.produs.disponibil_online_pana);
+                    let zi = d.getDate();
+                    let ziSapt = zileSapt[d.getDay()];
+                    let luna = luniAn[d.getMonth()];
+                    let an = d.getFullYear();
+                    let isoMonth = String(d.getMonth() + 1).padStart(2, '0');
+                    let isoDay = String(d.getDate()).padStart(2, '0');
+                    let isoDate = `${an}-${isoMonth}-${isoDay}`;
+                %>
+                <time datetime="<%= isoDate %>"><%= `${zi}(${ziSapt})/${luna}/${an}` %></time>
+                <% } else { %> Nelimitat <% } %>
+            </li>
+            <li>Tipuri permise de expediere:
+                <ul>
+                    <% if (locals.produs.expediere) { %>
+                        <li><%- locals.produs.expediere %></li>
+                        <% } else { %>
+                            <li>Produsul poate fi ridicat exclusiv din magazinul fizic.</li>
+                            <% } %>
+                </ul>
+            </li>
+            <li>Dimensiuni: 
+                <% if (locals.produs.dimensiuni_cm && locals.produs.dimensiuni_cm.length > 0) { %>
+                    <%- locals.produs.dimensiuni_cm.join(' x ') %> cm
+                <% } else { %>
+                    Nespecificat
+                <% } %>
+            </li>
+            <li>In magazin fizic: <%- locals.produs.in_magazin_fizic ? 'Da' : 'Nu' %></li>
+            <li>Face parte dintr-un set: <%- locals.produs.este_set ? 'Da' : 'Nu' %></li>
+        </ul>
+    </main>
+    <footer>
+        <%- include('../fragmente/footer.ejs') %>
+    </footer>
+</body>
+
+</html>

@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const sass = require("sass");
 const sharp = require("sharp");
-
+const pg = require("pg");
 app = express();
 app.set("view engine", "ejs")
 
@@ -11,9 +11,30 @@ console.log("Folder index.js", __dirname);
 console.log("Folder curent (de lucru)", process.cwd());
 console.log("Cale fisier", __filename);
 
+// Baza de date - conectare
+client = new pg.Client({
+    database: "tw_proiect",
+    user: "admin",
+    password: "123456",
+    host: "localhost",
+    port: 5432,
+
+});
+client.connect();
+
+client.query("select * from produse where id > 3;", function (err, rez) {
+    if (err)
+        console.log("eroare la select", err);
+    else
+        rez.rows.forEach(el => {
+            console.log(el);
+        });
+});
+
 obGlobal = {
     obErori: null,
     obImagini: null,
+    obProduse: null,
     folderScss: path.join(__dirname, "resurse/scss"),
     folderCss: path.join(__dirname, "resurse/css"),
     folderBackup: path.join(__dirname, "backup"),
@@ -29,7 +50,7 @@ for (let vector of vect_foldere) {
 
 
 app.use("/resurse", express.static(path.join(__dirname, "resurse")));
-app.get("/favicon.ico", function(req, res) {
+app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/favicon/favicon.ico"));
 });
 
@@ -66,6 +87,16 @@ function initImagini() {
         img.fisier_imagine = path.join("/", caleGalerie, img.fisier_imagine);
     }
     console.log("Obiect imagini", obGlobal.obImagini);
+}
+
+function initProduse() {
+    client.query("select * from produse", function (err, res) {
+        if (err) {
+            console.log("Eroare la select", err);
+        } else {
+            obGlobal.obProduse = res.rows;
+        }
+    });
 }
 
 function checkFiles() {
@@ -206,7 +237,7 @@ for (let numeFis of vFisiere) {
     }
 }
 
-fs.watch(obGlobal.folderScss, function(eveniment, numeFis) {
+fs.watch(obGlobal.folderScss, function (eveniment, numeFis) {
     if (eveniment == "change" || eveniment == "rename") {
         let caleCompleta = path.join(obGlobal.folderScss, numeFis);
         if (fs.existsSync(caleCompleta)) {
@@ -216,25 +247,59 @@ fs.watch(obGlobal.folderScss, function(eveniment, numeFis) {
 });
 
 
-app.get(["/", "/index", "/home"], function(req, res) {
+app.get(["/", "/index", "/home"], function (req, res) {
     res.render("pagini/index", {
         ip: req.ip,
         imagini: obGlobal.obImagini.imagini
     });
 });
 
-app.get("/contact", function(req, res) {
+app.get("/contact", function (req, res) {
     res.render("pagini/contact");
 });
 
+app.get("/produse", function (req, res) {
+    let clauzaWhere = "";
+    if (req.query.categorie)
+        clauzaWhere = `where categorie = '${req.query.categorie}'`;
+    client.query(`select * from produse ${clauzaWhere}`, function (err, rez) {
+        if (err) {
+            console.log("Eroare select: ", err);
+            afisareEroare(res, 2);
+        } else {
+            res.render("pagini/produse", {
+                produse: rez.rows,
+                optiuni: []
+            });
+        }
+    });
 
-app.get("/*pagina", function(req, res) {
+});
+
+app.get("/produse/produs/:id", function (req, res) {
+    client.query(`select * from produse where id = ${req.params.id}`, function (err, rez) {
+        if (err) {
+            console.log("EROARE", err);
+            afisareEroare(res, 2);
+        } else {
+            if (rez.rows.length == 0) {
+                afisareEroare(res, 404, "Produs inexistent");
+                return;
+            }
+            res.render("pagini/produs", {
+                produs: rez.rows[0],
+            });
+        }
+    });
+});
+
+
+app.get("/*pagina", function (req, res) {
     console.log("Cale pagina", req.url);
     console.log("Cale pagina oare css? :", req.url);
     console.log("extname:", path.extname(req.url));
 
     if (req.url.startsWith("/resurse") && path.extname(req.url) == "") {
-        console.log("ce plm");
         afisareEroare(res, 403);
         return;
     }
@@ -245,7 +310,7 @@ app.get("/*pagina", function(req, res) {
     }
 
     try {
-        res.render("pagini" + req.url, function(err, rezRandare) {
+        res.render("pagini" + req.url, function (err, rezRandare) {
             if (err) {
                 if (err.message.includes("Failed to lookup view")) {
                     afisareEroare(res, 404);
@@ -269,7 +334,10 @@ app.get("/*pagina", function(req, res) {
 
 initErori();
 initImagini();
+initProduse();
 checkFiles();
+
+
 
 
 app.listen(8080);
