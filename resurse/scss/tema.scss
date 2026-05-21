@@ -1,0 +1,116 @@
+// ============================================================
+// Tema Light / Dark — variabile CSS
+// Culorile dark sunt cele din schema cromatica din README.md
+// ============================================================
+
+// --- Variabile SCSS din schema cromatica ---
+$bg-primary-dark:        black;
+$bg-dark-dark:           #1a1a3e;
+$border-glow-dark:       #E30DEB;
+$accent-highlight-dark:  #7E19E0;
+$text-primary-dark:      white;
+$accent-cyan-dark:       #19C0E0;
+$accent-blue-dark:       #206EE6;
+$accent-indigo-dark:     #2319E0;
+$accent-purple-dark:     #7E19E0;
+$accent-magenta-dark:    #E30DEB;
+$accent-pink-dark:       #DC63E0;
+
+// --- Variabile light ---
+$bg-primary-light:       #f0eef5;
+$bg-dark-light:          #ddd8ec;
+$border-glow-light:      #b830bf;
+$accent-highlight-light: #6a11c7;
+$text-primary-light:     #1a1a2e;
+$accent-cyan-light:      #0e8fa6;
+$accent-blue-light:      #1a5cc0;
+$accent-indigo-light:    #1c12b3;
+$accent-purple-light:    #6a11c7;
+$accent-magenta-light:   #b830bf;
+$accent-pink-light:      #a84aad;
+
+// ============================================================
+// Dark theme (default) — nu se schimba nimic
+// ============================================================
+[data-tema="dark"] {
+  --bg-primary:        #{$bg-primary-dark};
+  --bg-dark:           #{$bg-dark-dark};
+  --border-glow:       #{$border-glow-dark};
+  --accent-highlight:  #{$accent-highlight-dark};
+  --text-primary:      #{$text-primary-dark};
+  --accent-cyan:       #{$accent-cyan-dark};
+  --accent-blue:       #{$accent-blue-dark};
+  --accent-indigo:     #{$accent-indigo-dark};
+  --accent-purple:     #{$accent-purple-dark};
+  --accent-magenta:    #{$accent-magenta-dark};
+  --accent-pink:       #{$accent-pink-dark};
+}
+
+// ============================================================
+// Light theme
+// ============================================================
+[data-tema="light"] {
+  --bg-primary:        #{$bg-primary-light};
+  --bg-dark:           #{$bg-dark-light};
+  --border-glow:       #{$border-glow-light};
+  --accent-highlight:  #{$accent-highlight-light};
+  --text-primary:      #{$text-primary-light};
+  --accent-cyan:       #{$accent-cyan-light};
+  --accent-blue:       #{$accent-blue-light};
+  --accent-indigo:     #{$accent-indigo-light};
+  --accent-purple:     #{$accent-purple-light};
+  --accent-magenta:    #{$accent-magenta-light};
+  --accent-pink:       #{$accent-pink-light};
+
+  // Suprascrie si bs body vars
+  --bs-body-bg:     #{$bg-primary-light};
+  --bs-body-color:  #{$text-primary-light};
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  header {
+    background: linear-gradient(180deg, #c4a0e8, #e8e0f5 55%, #{$bg-primary-light});
+  }
+
+  footer {
+    background: linear-gradient(180deg, #{$bg-primary-light}, #d5cce8 45%, #{$accent-purple-light});
+  }
+
+  nav {
+    background-color: #{$bg-dark-light};
+  }
+
+  a:visited {
+    color: #{$accent-magenta-light};
+  }
+}
+
+// ============================================================
+// Buton tema (header)
+// ============================================================
+#btn-tema {
+  background: none;
+  border: 2px solid var(--accent-cyan);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--accent-cyan);
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  margin-left: 0.75rem;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: var(--accent-purple);
+    border-color: var(--accent-magenta);
+    color: white;
+    transform: rotate(20deg) scale(1.1);
+  }
+}

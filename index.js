@@ -35,6 +35,7 @@ obGlobal = {
     obErori: null,
     obImagini: null,
     obProduse: null,
+    categoriiNav: [],
     folderScss: path.join(__dirname, "resurse/scss"),
     folderCss: path.join(__dirname, "resurse/css"),
     folderBackup: path.join(__dirname, "backup"),
@@ -97,6 +98,29 @@ function initProduse() {
             obGlobal.obProduse = res.rows;
         }
     });
+}
+
+function initCategoriiNav() {
+    let caleSql = path.join(__dirname, "resurse/sql/db.sql");
+    let continut = fs.readFileSync(caleSql).toString("utf-8");
+
+    // Extragem valorile din CREATE TYPE categorie_tip AS ENUM (...)
+    let regex = /CREATE\s+TYPE\s+categorie_tip\s+AS\s+ENUM\s*\(([^)]+)\)/i;
+    let match = continut.match(regex);
+    if (match) {
+        let valori = match[1];
+        // Extragem fiecare valoare din ghilimele simple
+        let categorii = [];
+        let regexVal = /'([^']+)'/g;
+        let m;
+        while ((m = regexVal.exec(valori)) !== null) {
+            categorii.push(m[1]);
+        }
+        obGlobal.categoriiNav = categorii;
+        console.log("Categorii navigare (din enum SQL):", obGlobal.categoriiNav);
+    } else {
+        console.error("Nu s-a gasit enum-ul categorie_tip in db.sql");
+    }
 }
 
 function checkFiles() {
@@ -224,6 +248,7 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
         imagine: imagine || eroare?.imagine || errDefault.imagine,
         titlu: titlu || eroare?.titlu || errDefault.titlu,
         text: text || eroare?.text || errDefault.text,
+        categoriiNav: obGlobal.categoriiNav,
     });
 }
 
@@ -250,26 +275,57 @@ fs.watch(obGlobal.folderScss, function (eveniment, numeFis) {
 app.get(["/", "/index", "/home"], function (req, res) {
     res.render("pagini/index", {
         ip: req.ip,
-        imagini: obGlobal.obImagini.imagini
+        imagini: obGlobal.obImagini.imagini,
+        categoriiNav: obGlobal.categoriiNav,
     });
 });
 
 app.get("/contact", function (req, res) {
-    res.render("pagini/contact");
+    res.render("pagini/contact", {
+        categoriiNav: obGlobal.categoriiNav,
+    });
 });
 
 app.get("/produse", function (req, res) {
-    let clauzaWhere = "";
-    if (req.query.categorie)
-        clauzaWhere = `where categorie = '${req.query.categorie}'`;
-    client.query(`select * from produse ${clauzaWhere}`, function (err, rez) {
+    client.query(`select * from produse`, function (err, rez) {
         if (err) {
             console.log("Eroare select: ", err);
             afisareEroare(res, 2);
         } else {
+            let produse = rez.rows;
+
+            let personajeSet = new Set();
+            let jocuri = new Set();
+            let categorii = new Set();
+            let subcategorii = new Set();
+            let expedieri = new Set();
+            let pretMin = Infinity, pretMax = -Infinity;
+
+            for (let p of produse) {
+                if (p.personaje_asociate) {
+                    for (let pers of p.personaje_asociate) {
+                        if (pers) personajeSet.add(pers);
+                    }
+                }
+                if (p.joc_sursa) jocuri.add(p.joc_sursa);
+                if (p.categorie) categorii.add(p.categorie);
+                if (p.subcategorie) subcategorii.add(p.subcategorie);
+                if (p.expediere) expedieri.add(p.expediere);
+                let pret = parseFloat(p.pret);
+                if (pret < pretMin) pretMin = pret;
+                if (pret > pretMax) pretMax = pret;
+            }
+
             res.render("pagini/produse", {
-                produse: rez.rows,
-                optiuni: []
+                produse: produse,
+                personaje: Array.from(personajeSet).sort(),
+                jocuri: Array.from(jocuri).sort(),
+                categorii: Array.from(categorii).sort(),
+                subcategorii: Array.from(subcategorii).sort(),
+                expedieri: Array.from(expedieri).sort(),
+                pretMin: pretMin,
+                pretMax: pretMax,
+                categoriiNav: obGlobal.categoriiNav,
             });
         }
     });
@@ -288,6 +344,7 @@ app.get("/produse/produs/:id", function (req, res) {
             }
             res.render("pagini/produs", {
                 produs: rez.rows[0],
+                categoriiNav: obGlobal.categoriiNav,
             });
         }
     });
@@ -310,7 +367,7 @@ app.get("/*pagina", function (req, res) {
     }
 
     try {
-        res.render("pagini" + req.url, function (err, rezRandare) {
+        res.render("pagini" + req.url, { categoriiNav: obGlobal.categoriiNav }, function (err, rezRandare) {
             if (err) {
                 if (err.message.includes("Failed to lookup view")) {
                     afisareEroare(res, 404);
@@ -335,6 +392,7 @@ app.get("/*pagina", function (req, res) {
 initErori();
 initImagini();
 initProduse();
+initCategoriiNav();
 checkFiles();
 
 

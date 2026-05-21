@@ -1,3 +1,98 @@
+#sectiune-filtre {
+  border: 0.1rem solid var(--accent-purple);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, rgba(26, 26, 62, 0.8), rgba(0, 0, 0, 0.6));
+  box-shadow: 0 0 0.5rem var(--accent-purple), 0 0 1rem rgba(126, 25, 224, 0.3);
+}
+#sectiune-filtre .form-label {
+  color: var(--accent-cyan);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: "Orbitron", sans-serif;
+}
+#sectiune-filtre .form-control,
+#sectiune-filtre .form-select {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-color: var(--accent-purple);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+#sectiune-filtre .form-control:focus,
+#sectiune-filtre .form-select:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0.3rem var(--accent-cyan);
+}
+#sectiune-filtre .form-floating label {
+  color: var(--accent-cyan);
+}
+#sectiune-filtre .form-floating .form-control:focus ~ label,
+#sectiune-filtre .form-floating .form-control:not(:placeholder-shown) ~ label {
+  color: var(--accent-pink);
+}
+#sectiune-filtre .btn-check:checked + .btn-outline-info {
+  background-color: var(--accent-cyan) !important;
+  border-color: var(--accent-cyan) !important;
+  color: #000 !important;
+}
+#sectiune-filtre .checkbox-personaje {
+  max-height: 10rem;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+#sectiune-filtre .form-range::-webkit-slider-thumb {
+  cursor: pointer;
+}
+#sectiune-filtre .form-range::-moz-range-thumb {
+  cursor: pointer;
+}
+#sectiune-filtre .form-check-input:checked {
+  background-color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+#sectiune-filtre .form-switch .form-check-label {
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+#notificare-calcul {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background: linear-gradient(135deg, #1a1a3e, #0a0a2e);
+  border: 0.15rem solid var(--accent-cyan);
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 1.5rem var(--accent-cyan), 0 0 3rem rgba(25, 192, 224, 0.3);
+  color: white;
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: left;
+  animation: notificare-in 0.3s ease-out;
+}
+#notificare-calcul strong {
+  color: var(--accent-pink);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.9rem;
+}
+#notificare-calcul i {
+  color: var(--accent-cyan);
+  margin-right: 0.3rem;
+}
+
+@keyframes notificare-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
 main h2 {
   padding-top: 0.5rem;
   text-align: center;
@@ -97,4 +192,10 @@ main #container-produse article .categorie {
 }
 main #container-produse article .categorie p {
   margin: 0;
+}
+
+@media screen and (max-width: 700px) {
+  #container-produse {
+    grid-template-columns: 1fr !important;
+  }
 }

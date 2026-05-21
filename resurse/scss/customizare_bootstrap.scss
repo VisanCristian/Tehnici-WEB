@@ -12,6 +12,17 @@
   $border-width: 0.125rem,
   $border-radius: 0.75rem,
   $border-radius-lg: 1rem,
+
+  // Customizare butoane - border
+  $btn-border-radius: 0.75rem,
+  $btn-border-width: 0.125rem,
+
+  // Customizare range slider
+  $form-range-thumb-width: 1.5rem,
+  $form-range-thumb-bg: #19c0e0,
+  $form-range-thumb-active-bg: #e30deb,
+  $form-range-track-bg: #333333,
+
   $grid-breakpoints: (
     xs: 0,
     sm: 576px,
@@ -48,16 +59,16 @@
 
 [data-bs-theme="light"] {
   color-scheme: light;
-  --bs-body-bg: orange;
-  --bs-body-color: #ffffff;
-  --bs-primary: #000000;
-  --bs-primary-rgb: 0, 0, 0;
-  --bs-secondary: #ffffff;
-  --bs-secondary-rgb: 255, 255, 255;
-  --bs-info: #19c0e0;
-  --bs-info-rgb: 25, 192, 224;
-  --bs-link-color: #19c0e0;
-  --bs-link-color-rgb: 25, 192, 224;
-  --bs-link-hover-color: #e30deb;
-  --bs-link-hover-color-rgb: 227, 13, 235;
+  --bs-body-bg: #f0eef5;
+  --bs-body-color: #1a1a2e;
+  --bs-primary: #6a11c7;
+  --bs-primary-rgb: 106, 17, 199;
+  --bs-secondary: #1a1a2e;
+  --bs-secondary-rgb: 26, 26, 46;
+  --bs-info: #0e8fa6;
+  --bs-info-rgb: 14, 143, 166;
+  --bs-link-color: #0e8fa6;
+  --bs-link-color-rgb: 14, 143, 166;
+  --bs-link-hover-color: #b830bf;
+  --bs-link-hover-color-rgb: 184, 48, 191;
 }

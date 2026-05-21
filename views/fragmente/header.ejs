@@ -29,10 +29,11 @@
         <span class="fas fa-solid fa-store"></span>
       </div>
       <ul>
-        <li><a href="/produse?categorie=vestimentar">Vestimentatie</a></li>
-        <li><a href="/produse?categorie=accesorii">Accesorii</a></li>
-        <li><a href="/produse?categorie=costume">Costume</a></li>
-        <li><a href="/produse?categorie=figurine">Figurine</a></li>
+        <% if (locals.categoriiNav && locals.categoriiNav.length > 0) { %>
+          <% for (let cat of locals.categoriiNav) { %>
+            <li><a href="/produse?categorie=<%= cat %>"><%= cat.charAt(0).toUpperCase() + cat.slice(1) %></a></li>
+          <% } %>
+        <% } %>
       </ul>
     </li>
     <li>
@@ -52,4 +53,7 @@
       </div>
     </li>
   </ul>
+  <button id="btn-tema" type="button" title="Schimba tema">
+    <i id="icon-tema" class="fa-solid fa-moon"></i>
+  </button>
 </nav>

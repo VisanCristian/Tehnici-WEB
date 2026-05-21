@@ -1,0 +1,134 @@
+<section id="sectiune-filtre">
+
+    <div class="row g-3 align-items-start">
+
+        <div class="col-12 col-md-6 col-lg-3">
+
+            <div class="mb-3">
+                <label for="filtru-nume" class="form-label">Cautare dupa nume</label>
+                <input type="text" class="form-control form-control-sm" id="filtru-nume"
+                    placeholder="ex: Freddy, Hanorac...">
+                <div class="invalid-feedback">Numele nu poate contine doar cifre.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="filtru-pret" class="form-label">Pret maxim</label>
+                <div class="d-flex align-items-center gap-2">
+                    <small><%= locals.pretMin %></small>
+                    <input type="range" class="form-range flex-grow-1" id="filtru-pret"
+                        min="<%= locals.pretMin %>" max="<%= locals.pretMax %>"
+                        value="<%= locals.pretMax %>" step="0.01">
+                    <small><%= locals.pretMax %></small>
+                    <small>(<span id="range-valoare"><%= locals.pretMax %></span>)</small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="filtru-expediere" class="form-label">Tip expediere</label>
+                <input type="text" class="form-control form-control-sm" id="filtru-expediere"
+                    list="lista-expediere" placeholder="Selectati sau scrieti...">
+                <datalist id="lista-expediere">
+                    <% for (let exp of locals.expedieri) { %>
+                        <option value="<%= exp %>">
+                    <% } %>
+                </datalist>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+
+            <div class="mb-3">
+                <label class="form-label d-block">Joc sursa</label>
+                <div class="d-flex flex-wrap gap-1">
+                    <input type="radio" class="btn-check" name="filtru-joc"
+                        id="joc-oricare" value="" checked autocomplete="off">
+                    <label class="btn btn-outline-info btn-sm" for="joc-oricare">Oricare</label>
+
+                    <% for (let joc of locals.jocuri) { %>
+                        <input type="radio" class="btn-check" name="filtru-joc"
+                            id="joc-<%= joc %>" value="<%= joc %>" autocomplete="off">
+                        <label class="btn btn-outline-info btn-sm" for="joc-<%= joc %>"><%= joc %></label>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="filtru-categorie" class="form-label">Categorie</label>
+                <select class="form-select form-select-sm" id="filtru-categorie">
+                    <option value="" selected>Oricare</option>
+                    <% for (let cat of locals.categorii) { %>
+                        <option value="<%= cat %>"><%= cat %></option>
+                    <% } %>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+
+            <div class="mb-3">
+                <label class="form-label d-block">Personaje</label>
+                <div class="d-flex flex-wrap gap-1 checkbox-personaje">
+                    <% for (let i = 0; i < locals.personaje.length; i++) { let pers = locals.personaje[i]; %>
+                        <input type="checkbox" class="btn-check" name="filtru-personaj"
+                            id="pers-<%= i %>" value="<%= pers %>" checked autocomplete="off">
+                        <label class="btn btn-outline-info btn-sm" for="pers-<%= i %>"><%= pers %></label>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="filtru-subcategorie" class="form-label">Subcategorie (selectie multipla)</label>
+                <select class="form-select form-select-sm" id="filtru-subcategorie" multiple size="5">
+                    <% for (let sub of locals.subcategorii) { %>
+                        <option value="<%= sub %>" selected><%= sub %></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="filtru-textarea"
+                    placeholder=" "
+                    style="height: 120px"></textarea>
+                <label for="filtru-textarea">Cuvinte cheie (separate cu virgula)</label>
+                <div class="invalid-feedback">Introduceti cuvinte valide, separate cu virgula.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-2 mt-2 mb-3">
+        <div class="col-auto">
+            <button class="btn btn-info" id="btn-filtreaza">
+                <i class="bi bi-funnel-fill"></i>
+                <span class="d-none d-md-inline">Filtreaza</span>
+            </button>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-info" id="btn-sort-asc">
+                <i class="bi bi-sort-up"></i>
+                <span class="d-none d-md-inline">Sortare ↑</span>
+            </button>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-info" id="btn-sort-desc">
+                <i class="bi bi-sort-down"></i>
+                <span class="d-none d-md-inline">Sortare ↓</span>
+            </button>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-info" id="btn-calculeaza">
+                <i class="bi bi-calculator-fill"></i>
+                <span class="d-none d-md-inline">Calculeaza</span>
+            </button>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-danger" id="btn-reseteaza">
+                <i class="bi bi-arrow-counterclockwise"></i>
+                <span class="d-none d-md-inline">Reseteaza</span>
+            </button>
+        </div>
+    </div>
+</section>
