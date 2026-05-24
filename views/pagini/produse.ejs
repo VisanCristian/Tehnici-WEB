@@ -22,23 +22,20 @@
             <h2>Magazin</h2>
 
             <%- include('../fragmente/filtre.ejs') %>
+                <section id="paginare">
+                </section>
+                <section id="container-produse">
+                    <% for (let produs of produse) { %>
+                        <% let personaje=[]; if (produs.personaje_asociate) { for (let p of produs.personaje_asociate) {
+                            if (p) personaje.push(p); } } let personajeStr=personaje.length> 0 ? personaje.join(', ') :
+                            '-';
 
-            <section id="container-produse">
-                <% for (let produs of produse) { %>
-                    <% 
-                        let personaje = [];
-                        if (produs.personaje_asociate) {
-                            for (let p of produs.personaje_asociate) {
-                                if (p) personaje.push(p);
-                            }
-                        }
-                        let personajeStr = personaje.length > 0 ? personaje.join(', ') : '-';
-
-                        let dataStr = 'Nelimitat';
-                        let isoDate = '';
-                        if (produs.disponibil_online_pana) {
+                            let dataStr = 'Nelimitat';
+                            let isoDate = '';
+                            if (produs.disponibil_online_pana) {
                             const zileSapt = ['Duminică','Luni','Marți','Miercuri','Joi','Vineri','Sâmbătă'];
-                            const luniAn = ['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'];
+                            const luniAn =
+                            ['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'];
                             let d = new Date(produs.disponibil_online_pana);
                             let zi = d.getDate();
                             let ziSapt = zileSapt[d.getDay()];
@@ -48,56 +45,95 @@
                             let isoDay = String(d.getDate()).padStart(2,'0');
                             isoDate = an + '-' + isoMonth + '-' + isoDay;
                             dataStr = zi + '(' + ziSapt + ')/' + luna + '/' + an;
-                        }
+                            }
 
-                        let pretFinal = produs.pret;
-                        if (produs.reducere_pct) {
+                            let pretFinal = produs.pret;
+                            if (produs.reducere_pct) {
                             pretFinal = (produs.pret * (1 - produs.reducere_pct / 100)).toFixed(2);
-                        }
-                    %>
-                    <article class="produs <%= produs.categorie %>" id="ent<%= produs.id %>"
-                        data-categorie="<%= produs.categorie %>"
-                        data-subcategorie="<%= produs.subcategorie || '' %>"
-                        data-joc="<%= produs.joc_sursa || '' %>"
-                        data-expediere="<%= produs.expediere || '' %>"
-                        data-personaje="<%= personaje.join('|') %>"
-                        data-nr-personaje="<%= personaje.length %>">
-                        <h3><span class="val-nume"><%= produs.nume %></span><%= produs.este_set ? ' (SET)' : '' %></h3>
-                        <div class="produs-detalii">
-                            <table class="produs-tabel">
-                                <thead>
-                                    <th>Pret</th>
-                                    <th>Joc</th>
-                                    <th>Personaje</th>
-                                    <th>Poate fi gasit in magazin pana la data de</th>
-                                    <th>Set</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><span class="val-pret"><%= produs.pret %></span> RON</td>
-                                        <td><%= produs.joc_sursa || '-' %></td>
-                                        <td><%= personajeStr %></td>
-                                        <td><% if (isoDate) { %><time datetime="<%= isoDate %>"><%= dataStr %></time><% } else { %>Nelimitat<% } %></td>
-                                        <td><%= produs.este_set %></td>
-                                    </tr>
-                                </tbody>
-                                <caption class="descriere val-descriere"><%= produs.descriere %></caption>
-                            </table>
-                            <img src="<%= produs.imagine_cale %>" alt="imagine">
-                        </div>
-                        <div class="categorie">
-                            <p>CATEGORIE: <span class="val-categorie"><%= produs.categorie %></span></p>
-                            <% if (produs.subcategorie) { %>
-                                <p>SUBCATEGORIE: <%= produs.subcategorie %></p>
+                            }
+                            %>
+                            <article class="card hidden produs <%= produs.categorie %>" id="ent<%= produs.id %>"
+                                data-categorie="<%= produs.categorie %>"
+                                data-subcategorie="<%= produs.subcategorie || '' %>"
+                                data-joc="<%= produs.joc_sursa || '' %>" data-expediere="<%= produs.expediere || '' %>"
+                                data-personaje="<%= personaje.join('|') %>" data-nr-personaje="<%= personaje.length %>">
+                                <div class="card-body d-flex flex-column flex-grow-1">
+                                <h3 class="card-title"><span class="val-nume">
+                                        <%= produs.nume %>
+                                    </span>
+                                    <%= produs.este_set ? ' (SET)' : '' %>
+                                </h3>
+                                <div class="produs-detalii">
+                                    <table class="produs-tabel">
+                                        <thead>
+                                            <th>Pret</th>
+                                            <th>Joc</th>
+                                            <th>Personaje</th>
+                                            <th>Poate fi gasit in magazin pana la data de</th>
+                                            <th>Set</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="val-pret">
+                                                        <%= produs.pret %>
+                                                    </span> RON</td>
+                                                <td>
+                                                    <%= produs.joc_sursa || '-' %>
+                                                </td>
+                                                <td>
+                                                    <%= personajeStr %>
+                                                </td>
+                                                <td>
+                                                    <% if (isoDate) { %><time datetime="<%= isoDate %>">
+                                                            <%= dataStr %>
+                                                        </time>
+                                                        <% } else { %>Nelimitat<% } %>
+                                                </td>
+                                                <td>
+                                                    <%= produs.este_set %>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <caption class="descriere val-descriere">
+                                            <%= produs.descriere %>
+                                        </caption>
+                                    </table>
+                                    <img src="<%= produs.imagine_cale %>" alt="imagine">
+                                </div>
+                                <div class="categorie">
+                                    <p>CATEGORIE: <span class="val-categorie">
+                                            <%= produs.categorie %>
+                                        </span></p>
+                                    <% if (produs.subcategorie) { %>
+                                        <p>SUBCATEGORIE: <%= produs.subcategorie %>
+                                        </p>
+                                        <% } %>
+                                            <% if (produs.reducere_pct) { %>
+                                                <p>OFERTA: <strike>
+                                                        <%= produs.pret %> RON
+                                                    </strike> -> <%= pretFinal %> RON</p>
+                                                <% } %>
+                                                    <div class="actiuni-produs d-flex gap-2 justify-content-center mt-3" style="position: relative; z-index: 20;">
+                                                        <button class="btn-pin btn btn-outline-info" title="Păstrează produsul pe ecran (chiar la filtrări noi)" onclick="pinArticol('ent<%= produs.id %>', this)">
+                                                            <i class="bi bi-pin-angle"></i>
+                                                        </button>
+                                                        <button class="btn-temp btn btn-outline-warning" title="Șterge temporar (reapare la o nouă filtrare/resetare)" onclick="removeTempArticol('ent<%= produs.id %>')">
+                                                            <i class="bi bi-eye-slash"></i>
+                                                        </button>
+                                                        <button class="btn-session btn btn-outline-danger" title="Șterge produsul din listă pe timpul sesiunii curente" onclick="removeSessionArticol('ent<%= produs.id %>')">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </div>
+                                </div>
+                                </div>
+                                <a href="/produse/produs/<%= produs.id %>"> </a>
+                            </article>
                             <% } %>
-                            <% if (produs.reducere_pct) { %>
-                                <p>OFERTA: <strike><%= produs.pret %> RON</strike> -> <%= pretFinal %> RON</p>
-                            <% } %>
-                        </div>
-                        <a href="/produse/produs/<%= produs.id %>"> </a>
-                    </article>
-                <% } %>
-            </section>
+                </section>
+
+                <div class="row" id="div-pagini">
+
+                </div>
         </main>
 
         <footer>

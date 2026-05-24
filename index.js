@@ -35,6 +35,7 @@ obGlobal = {
     obErori: null,
     obImagini: null,
     obProduse: null,
+    obFiltre: null,
     categoriiNav: [],
     folderScss: path.join(__dirname, "resurse/scss"),
     folderCss: path.join(__dirname, "resurse/css"),
@@ -121,6 +122,90 @@ function initCategoriiNav() {
     } else {
         console.error("Nu s-a gasit enum-ul categorie_tip in db.sql");
     }
+}
+function initValFiltre(client) {
+    // Tipuri de Joc
+    let jocuri = [];
+    client.query(`select * from unnest(enum_range(null::joc_tip))`, function (err, res) {
+        if (err) {
+            console.log("Eroare la extragerea tipurilor de jocuri din enum:", err);
+        } else {
+            for (let tip of res.rows) {
+                jocuri.push(tip.unnest);
+            }
+        }
+    });
+
+    let personaje = [];
+    client.query(`select distinct unnest(personaje_asociate) as personaj from produse where personaje_asociate is not null`, function (err, res) {
+        if (err) {
+            console.log("Eroare la extragerea personajelor din baza de date:", err);
+        } else {
+            for (let p of res.rows) {
+                personaje.push(p.personaj);
+            }
+        }
+    });
+
+    // Pret minim si maxim
+    let rangePreturi = [];
+    client.query(`select min(pret) as min, max(pret) as max from produse`, function (err, res) {
+        if (err) {
+            console.log("Eroare la extragerea preturilor din baza de date: ", err);
+        } else {
+            rangePreturi.push(res.rows[0].min);
+            rangePreturi.push(res.rows[0].max);
+        }
+    });
+
+    // Tipuri de expediere
+    let tipuriExpediere = [];
+    client.query(`select * from unnest(enum_range(null::expediere_tip))`, function (err, res) {
+        if (err) {
+            console.log("Eroare la extragerea tipurilor de expediere din baza de date ", err);
+        } else {
+            for (let tip of res.rows) {
+                tipuriExpediere.push(tip.unnest);
+            }
+        }
+    });
+
+    //Categorie
+    let categorii = [];
+    client.query(`select * from unnest(enum_range(null::categorie_tip))`, function (err, res) {
+        if (err) {
+            console.log("Eroare la extragerea categoriilor din baza de date ", err);
+        } else {
+            for (let cat of res.rows) {
+                categorii.push(cat.unnest);
+            }
+        }
+    });
+
+    // Subcategorie
+    let subcategorii = [];
+    client.query(`select * from unnest(enum_range(null::subcategorie_tip))`, function (err, res) {
+        if (err) {
+            console.log("Eroare la extragerea subcategoriilor din baza de date ", err);
+        } else {
+            for (let subcat of res.rows) {
+                subcategorii.push(subcat.unnest);
+            }
+        }
+    });
+
+    return {
+        jocuri: jocuri,
+        personaje: personaje,
+        rangePreturi: rangePreturi,
+        tipuriExpediere: tipuriExpediere,
+        categorii: categorii,
+        subcategorii: subcategorii,
+    }
+}
+
+function initFiltre(client) {
+    obGlobal.obFiltre = initValFiltre(client);
 }
 
 function checkFiles() {
@@ -287,49 +372,17 @@ app.get("/contact", function (req, res) {
 });
 
 app.get("/produse", function (req, res) {
-    client.query(`select * from produse`, function (err, rez) {
-        if (err) {
-            console.log("Eroare select: ", err);
-            afisareEroare(res, 2);
-        } else {
-            let produse = rez.rows;
-
-            let personajeSet = new Set();
-            let jocuri = new Set();
-            let categorii = new Set();
-            let subcategorii = new Set();
-            let expedieri = new Set();
-            let pretMin = Infinity, pretMax = -Infinity;
-
-            for (let p of produse) {
-                if (p.personaje_asociate) {
-                    for (let pers of p.personaje_asociate) {
-                        if (pers) personajeSet.add(pers);
-                    }
-                }
-                if (p.joc_sursa) jocuri.add(p.joc_sursa);
-                if (p.categorie) categorii.add(p.categorie);
-                if (p.subcategorie) subcategorii.add(p.subcategorie);
-                if (p.expediere) expedieri.add(p.expediere);
-                let pret = parseFloat(p.pret);
-                if (pret < pretMin) pretMin = pret;
-                if (pret > pretMax) pretMax = pret;
-            }
-
-            res.render("pagini/produse", {
-                produse: produse,
-                personaje: Array.from(personajeSet).sort(),
-                jocuri: Array.from(jocuri).sort(),
-                categorii: Array.from(categorii).sort(),
-                subcategorii: Array.from(subcategorii).sort(),
-                expedieri: Array.from(expedieri).sort(),
-                pretMin: pretMin,
-                pretMax: pretMax,
-                categoriiNav: obGlobal.categoriiNav,
-            });
-        }
+    res.render("pagini/produse", {
+        produse: obGlobal.obProduse,
+        personaje: obGlobal.obFiltre.personaje,
+        jocuri: obGlobal.obFiltre.jocuri,
+        categorii: obGlobal.obFiltre.categorii,
+        subcategorii: obGlobal.obFiltre.subcategorii,
+        expedieri: obGlobal.obFiltre.tipuriExpediere,
+        pretMin: obGlobal.obFiltre.rangePreturi[0],
+        pretMax: obGlobal.obFiltre.rangePreturi[1],
+        categoriiNav: obGlobal.categoriiNav,
     });
-
 });
 
 app.get("/produse/produs/:id", function (req, res) {
@@ -393,6 +446,7 @@ initErori();
 initImagini();
 initProduse();
 initCategoriiNav();
+initFiltre(client);
 checkFiles();
 
 

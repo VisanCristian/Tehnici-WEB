@@ -87,6 +87,17 @@
     <footer>
         <%- include('../fragmente/footer.ejs') %>
     </footer>
+    <script>
+        if (typeof setCookie === "function" && typeof getCookie === "function") {
+            if (getCookie("cookiesAccepted")) {
+                let infoProdus = {
+                    id: "<%- locals.produs.id %>",
+                    nume: "<%- locals.produs.nume %>"
+                };
+                setCookie("ultimulProdus", JSON.stringify(infoProdus), 0.5);
+            }
+        }
+    </script>
 </body>
 
 </html>

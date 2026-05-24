@@ -83,6 +83,7 @@
                     <% for (let sub of locals.subcategorii) { %>
                         <option value="<%= sub %>" selected><%= sub %></option>
                     <% } %>
+                    <option value="necategorizate" selected>Necategorizate</option>
                 </select>
             </div>
         </div>
@@ -128,6 +129,12 @@
             <button class="btn btn-outline-danger" id="btn-reseteaza">
                 <i class="bi bi-arrow-counterclockwise"></i>
                 <span class="d-none d-md-inline">Reseteaza</span>
+            </button>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-success" id="btn-salveaza-filtre">
+                <i class="bi bi-save"></i>
+                <span class="d-none d-md-inline">Salveaza Filtre</span>
             </button>
         </div>
     </div>

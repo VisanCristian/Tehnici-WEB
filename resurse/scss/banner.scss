@@ -1,0 +1,84 @@
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(26, 26, 62, 0.95), rgba(0, 0, 0, 0.95));
+    border-top: 0.2rem solid var(--accent-purple);
+    box-shadow: 0 -0.5rem 1rem rgba(126, 25, 224, 0.3);
+    padding: 1.5rem 2rem;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-family: "Orbitron", sans-serif;
+    color: var(--text-primary);
+    text-align: center;
+
+    &.hidden {
+        display: none !important;
+    }
+
+    .banner-content {
+        p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .disclaimer {
+            font-size: 0.9rem;
+            color: var(--accent-pink);
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    #btn-accept-cookies {
+        background-color: transparent;
+        border: 0.15rem solid var(--accent-cyan);
+        color: var(--accent-cyan);
+        padding: 0.5rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-weight: bold;
+
+        &:hover {
+            background-color: var(--accent-cyan);
+            color: black;
+            box-shadow: 0 0 1rem var(--accent-cyan);
+        }
+    }
+}
+
+// Animation
+@keyframes slideUpAndBounce {
+    0% {
+        transform: translateY(100%);
+        color: var(--accent-cyan);
+    }
+    50% {
+        transform: translateY(-20px);
+        color: var(--accent-pink);
+    }
+    100% {
+        transform: translateY(0);
+        color: var(--text-primary);
+    }
+}
+
+@media screen and (min-width: 1001px) {
+    #cookie-banner.banner-animation {
+        animation: slideUpAndBounce 3s ease-in-out forwards;
+    }
+}
+
+// Static on medium and small screens
+@media screen and (max-width: 1000px) {
+    #cookie-banner.banner-animation {
+        animation: none;
+    }
+}
